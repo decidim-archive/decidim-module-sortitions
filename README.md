@@ -20,3 +20,12 @@ Or install it yourself as:
 ```bash
 $ gem install decidim-module-sortitions
 ```
+
+## Import migrations
+
+After installing the gem you must import and execute the migrations bundled with the gem:
+
+```bash
+$ bundle exec rails decidim_module_sortitions:install:migrations
+$ bundle exec rails db:migrate
+```

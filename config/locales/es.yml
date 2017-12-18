@@ -1,0 +1,41 @@
+---
+es:
+  activemodel:
+    attributes:
+      sortition:
+        dice: Dado
+        target_items: Número de propuestas a seleccionar
+        decidim_category_id: Categoría
+        decidim_proposals_feature_id: Funcionalidad de propuestas
+  decidim:
+    features:
+      sortitions:
+        name: Sorteos
+        settings:
+          global:
+            description: Descripción
+    admin:
+      models:
+        sortition:
+          fields:
+            dice: Dado
+            request_timestamp: Hora de Sorteo
+            target_items: Elementos a seleccionar
+            seed: Semilla
+            category: Categoría
+            decidim_proposals_feature: Funcionalidad de propuestas
+            similar_count: Sorteos similares
+      titles:
+        sortition: Resultados del sorteo
+        selected_proposals: Propuestas seleccionadas por sorteo
+      sortition:
+        new:
+          title: Nuevo sorteo
+          create: Crear
+        form:
+          title: Nuevo sorteo de propuestas
+          all_categories: Todas las categorías
+          select_proposal_feature: Selecciona la funcionalidad de propuestas
+        create:
+          success: Sorteo creado correctamente.
+          error: Se ha producido un error al crear al crear el sorteo.

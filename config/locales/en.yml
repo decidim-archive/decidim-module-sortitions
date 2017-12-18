@@ -1,0 +1,41 @@
+---
+en:
+  activemodel:
+    attributes:
+      sortition:
+        dice: Dice
+        target_items: Quantity of proposals to select
+        decidim_category_id: Category
+        decidim_proposals_feature_id: Proposals feature
+  decidim:
+    features:
+      sortitions:
+        name: Sortitions
+        settings:
+          global:
+            description: Description
+    admin:
+      models:
+        sortition:
+          fields:
+            dice: Dice
+            request_timestamp: Draw time
+            target_items: Items to select
+            seed: Seed
+            category: Category
+            decidim_proposals_feature: Proposals feature
+            similar_count: Similar sortitions
+      titles:
+        sortition: Sortition results
+        selected_proposals: Proposals selected for draw
+      sortition:
+        new:
+          title: New sortition
+          create: Create
+        form:
+          title: New sortition for proposals
+          all_categories: All categories
+          select_proposal_feature: Select the proposals feature
+        create:
+          success: Sortition successfully created
+          error: There was an error creating a new sortition.
