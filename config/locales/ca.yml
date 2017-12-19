@@ -1,0 +1,41 @@
+---
+ca:
+  activemodel:
+    attributes:
+      sortition:
+        dice: Dau
+        target_items: Nombre de propostes a seleccionar
+        decidim_category_id: Categoria
+        decidim_proposals_feature_id: Funcionalitat de propostes
+  decidim:
+    features:
+      sortitions:
+        name: Sortejos
+        settings:
+          global:
+            description: Descripció
+    admin:
+      models:
+        sortition:
+          fields:
+            dice: Dau
+            request_timestamp: Hora del sorteig
+            target_items: Elements a seleccionar
+            seed: Llavor
+            category: Categoria
+            decidim_proposals_feature: Funcionalitat de propostes
+            similar_count: Sortejos similars
+      titles:
+        sortition: Resultat del sorteig
+        selected_proposals: Propostes seleccionades per sorteig
+      sortition:
+        new:
+          title: Nou sorteig
+          create: Crea
+        form:
+          title: Nou sorteig de propostes
+          all_categories: Totes les categories
+          select_proposal_feature: Selecciona la funcionalitat de propostes
+        create:
+          success: Sorteig creat correctament.
+          error: TS'ha produït un error creant el sorteig.

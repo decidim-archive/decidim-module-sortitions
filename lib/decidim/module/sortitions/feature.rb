@@ -2,19 +2,21 @@
 
 Decidim.register_feature(:sortitions) do |feature|
   feature.engine = Decidim::Module::Sortitions::Engine
+  feature.admin_engine = Decidim::Module::Sortitions::AdminEngine
   feature.icon = "decidim/module/sortitions/icon.svg"
+  feature.stylesheet = "decidim/module/sortitions/sortitions"
 
   feature.on(:before_destroy) do |instance|
-    # Code executed before removing the feature
+    if Decidim::Module::Sortitions::Sortition.where(feature: instance).any?
+      raise StandardError, "Can't remove this feature"
+    end
   end
 
   # These actions permissions can be configured in the admin panel
   feature.actions = %w()
 
   feature.settings(:global) do |settings|
-    # Add your global settings
-    # Available types: :integer, :boolean
-    # settings.attribute :vote_limit, type: :integer, default: 0
+    settings.attribute :description, type: :text, translated: true, editor: true
   end
 
   feature.settings(:step) do |settings|
@@ -32,6 +34,14 @@ Decidim.register_feature(:sortitions) do |feature|
   end
 
   feature.seeds do |participatory_space|
-    # Define seeds for a specific participatory_space object
+    feature = Decidim::Feature.create!(
+      name: Decidim::Features::Namer.new(participatory_space.organization.available_locales, :sortitions).i18n_name,
+      manifest_name: :sortitions,
+      published_at: Time.current,
+      participatory_space: participatory_space,
+      settings: {
+        description: Decidim::Faker::Localized.sentence(10)
+      }
+    )
   end
 end
