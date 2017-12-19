@@ -13,7 +13,7 @@ module Decidim
         isolate_namespace Decidim::Module::Sortitions
 
         routes do
-          resources :sortitions, only: [:index, :show]
+          resources :sortitions, only: :index
           root to: "sortitions#index"
         end
 

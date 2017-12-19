@@ -39,3 +39,15 @@ es:
         create:
           success: Sorteo creado correctamente.
           error: Se ha producido un error al crear al crear el sorteo.
+    module:
+      sortitions:
+        sortitions:
+          count:
+            proposals_count:
+              one: 1 propuesta
+              other: "%{count} propuestas"
+          author:
+            deleted: Usuario eliminado
+            verified_user_group: Organización verificada
+          proposal:
+            view_proposal: Ver propuesta
