@@ -41,17 +41,14 @@ module Decidim
               request_timestamp: Time.now.utc,
               decidim_category_id: form.decidim_category_id,
               dice: form.dice,
-              target_items: form.target_items
+              target_items: form.target_items,
+              selected_proposals: []
             )
           end
 
           def select_proposals_for(sortition)
-            proposals = ParticipatorySpaceProposals.for(sortition).to_a
-            return if proposals.empty?
-
-            sortition.update(
-              selected_proposals: proposals.sample(sortition.target_items, random: Random.new(sortition.seed)).pluck(:id)
-            )
+            proposals = Draw.for(sortition)
+            sortition.update(selected_proposals: proposals) unless proposals.empty?
           end
         end
       end

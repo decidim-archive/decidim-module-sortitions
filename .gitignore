@@ -4,3 +4,7 @@ pkg/
 
 spec/decidim_dummy_app
 .bash_history
+.byebug_history
+.pki
+.local
+coverage

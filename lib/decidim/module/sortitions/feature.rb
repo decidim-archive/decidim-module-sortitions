@@ -38,18 +38,10 @@ Decidim.register_feature(:sortitions) do |feature|
       name: Decidim::Features::Namer.new(participatory_space.organization.available_locales, :sortitions).i18n_name,
       manifest_name: :sortitions,
       published_at: Time.current,
-      participatory_space: participatory_space
+      participatory_space: participatory_space,
+      settings: {
+        description: Decidim::Faker::Localized.sentence(10)
+      }
     )
-
-  #   Decidim::Budgets::Project.create!(
-  #    feature: feature,
-  #    scope: participatory_space.organization.scopes.sample,
-  #    category: participatory_space.categories.sample,
-  #    title: Decidim::Faker::Localized.sentence(2),
-  #    description: Decidim::Faker::Localized.wrapped("<p>", "</p>") do
-  #      Decidim::Faker::Localized.paragraph(3)
-  #    end,
-  #    budget: Faker::Number.number(8)
-  #  )
   end
 end

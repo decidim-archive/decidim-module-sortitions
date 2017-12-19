@@ -24,7 +24,7 @@ module Decidim
             CreateSortition.call(@form) do
               on(:ok) do |sortition|
                 flash[:notice] = I18n.t("sortition.create.success", scope: "decidim.admin")
-                redirect_to sortition_path(sortition)
+                redirect_to sortition_path(feature_id: sortition.feature.id, participatory_process_slug: sortition.feature.participatory_space.slug, id: sortition.id)
               end
 
               on(:invalid) do

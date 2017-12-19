@@ -26,24 +26,22 @@ module Decidim
             if category.nil?
               return Decidim::Proposals::Proposal
                      .where("created_at < ?", request_timestamp)
-                     .where(feature: proposals_feature)
+                     .where(feature: sortition.decidim_proposals_feature)
                      .order(id: :asc)
             end
 
+            # categorization -> category
             Decidim::Proposals::Proposal
-              .where(feature: proposals_feature)
-              .where("created_at < ?", request_timestamp)
-              .where(category: category)
+              .joins(:categorization)
+              .where(feature: sortition.decidim_proposals_feature)
+              .where("decidim_proposals_proposals.created_at < ?", request_timestamp)
+              .where("decidim_categorizations.decidim_category_id = ?", category.id)
               .order(id: :asc)
           end
 
           private
 
           attr_reader :sortition, :category, :request_timestamp
-
-          def proposals_feature
-            Feature.find(sortition.decidim_proposals_feature_id)
-          end
         end
       end
     end

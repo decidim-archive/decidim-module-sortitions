@@ -1,4 +1,4 @@
-<div class="card" id="proposals">
+<div class="card" id="sortition">
   <div class="card-divider">
     <h2 class="card-title">
       <%=t "decidim.admin.titles.sortition" %>
@@ -6,7 +6,7 @@
   </div>
   <div class="card-section">
     <div class="table-scroll">
-      <table class="table-list">
+      <table class="table-list sortition">
         <thead>
           <tr>
             <th><%= t("models.sortition.fields.request_timestamp", scope: "decidim.admin") %></th>
@@ -36,7 +36,7 @@
   </div>
   <div class="card-section">
     <div class="table-scroll">
-      <table class="table-list">
+      <table class="table-list proposals">
         <thead>
           <tr>
             <th><%=t "decidim.admin.titles.selected_proposals" %></th>

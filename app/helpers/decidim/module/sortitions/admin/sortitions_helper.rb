@@ -5,6 +5,8 @@ module Decidim
     module Sortitions
       module Admin
         module SortitionsHelper
+          include Decidim::TranslationsHelper
+
           # Converst a list of features into a list of selectable options
           def features_options(features)
             features.map do |f|
