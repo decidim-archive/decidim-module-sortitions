@@ -39,3 +39,15 @@ ca:
         create:
           success: Sorteig creat correctament.
           error: TS'ha produït un error creant el sorteig.
+    module:
+      sortitions:
+        sortitions:
+          count:
+            proposals_count:
+              one: 1 proposta
+              other: "%{count} propostes"
+          author:
+            deleted: Usuari eliminat
+            verified_user_group: Organització verificada
+          proposal:
+            view_proposal: Veure proposta

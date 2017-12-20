@@ -1,0 +1,22 @@
+<div class="row column">
+  <div class="section">
+    <%= sanitize translated_attribute current_feature.settings.description %>
+  </div>
+</div>
+
+<% if sortition&.proposals %>
+  <div class="row columns">
+    <div class="title-action">
+      <h2 id="proposals-count" class="title-action__title section-heading">
+        <%= render partial: "count", locals: { proposals: sortition.proposals } %>
+      </h2>
+    </div>
+    <div class="row">
+      <div id="proposals" class="columns mediumlarge-12 large-12">
+        <div class="row small-up-1 medium-up-2 card-grid">
+          <%= render partial: "proposal", collection: sortition.proposals %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
