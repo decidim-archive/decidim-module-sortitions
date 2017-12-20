@@ -3,10 +3,10 @@ es:
   activemodel:
     attributes:
       sortition:
-        dice: Dado
-        target_items: Número de propuestas a seleccionar
-        decidim_category_id: Categoría
-        decidim_proposals_feature_id: Funcionalidad de propuestas
+        dice: Resultado de la tirada de dado (tira un dado de 6 caras (o busca otra manera aleatoria de generar un número del 1 al 6) e introduce aquí, frente a testigo el número resultante, esto contribuye a la calidad y garantías de la aleatoriedad del resultado
+        target_items: Número de propuestas a seleccionar (indica el número de propuestas que quieres que sean seleccionadas mediante sorteo del conjunto de propuestas que has escogido previamente)
+        decidim_category_id: Categorías del conjunto de propuestas en las que quieres aplicar el sorteo
+        decidim_proposals_feature_id: Conjunto de propuestas
   decidim:
     features:
       sortitions:
@@ -32,6 +32,7 @@ es:
         new:
           title: Nuevo sorteo
           create: Crear
+          confirm: Al pulsar el siguiente botón Decidim grabará el la fecha y hora (con precisión de segundos) y junto con la tirada de dados, esta información servirá para generar una seleccion aleatoria. La acción será irreversible, una vez pulsado el botón el resultado de este sorteo se publicará, junto los datos introducidos en este formulario y no se podrán modificar, por favor revisa concienzudamente el contenido
         form:
           title: Nuevo sorteo de propuestas
           all_categories: Todas las categorías

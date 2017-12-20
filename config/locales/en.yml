@@ -3,10 +3,10 @@ en:
   activemodel:
     attributes:
       sortition:
-        dice: Dice
-        target_items: Quantity of proposals to select
-        decidim_category_id: Category
-        decidim_proposals_feature_id: Proposals feature
+        dice: Result of die roll (roll a 6-sided die (or look for another random way to generate a number from 1 to 6) and enter here, as opposed to witness the resulting number, this contributes to the quality and guarantees of the randomness of the result
+        target_items: Number of proposals to be selected (indicates the number of proposals you want to be selected by drawing lots of the group of proposals you have previously chosen)
+        decidim_category_id: Categories of the set of proposals in which you want to apply the draw
+        decidim_proposals_feature_id: Proposals set
   decidim:
     features:
       sortitions:
@@ -32,6 +32,7 @@ en:
         new:
           title: New sortition
           create: Create
+          confirm: By pressing the next button Decidim will record the date and time (with precision of seconds) and together with the dice roll, this information will be used to generate a random selection. The action will be irreversible, once the button is clicked the result of this draw will be published, together with the data entered in this form and can not be modified, please check the content carefully
         form:
           title: New sortition for proposals
           all_categories: All categories
