@@ -3,7 +3,7 @@
 module Decidim
   module Module
     module Sortitions
-      VERSION = "0.1.0"
+      VERSION = "0.1.1"
     end
   end
 end
