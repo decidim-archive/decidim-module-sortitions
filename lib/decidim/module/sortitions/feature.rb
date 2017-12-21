@@ -15,13 +15,11 @@ Decidim.register_feature(:sortitions) do |feature|
   # These actions permissions can be configured in the admin panel
   feature.actions = %w()
 
-  feature.settings(:global) do |settings|
-    settings.attribute :description, type: :text, translated: true, editor: true
-  end
+  # feature.settings(:global) do |settings|
+  # end
 
-  feature.settings(:step) do |settings|
-    # Add your settings per step
-  end
+  # feature.settings(:step) do |settings|
+  # end
 
   # # Register an optional resource that can be referenced from other resources.
   # feature.register_resource do |resource|
@@ -38,10 +36,7 @@ Decidim.register_feature(:sortitions) do |feature|
       name: Decidim::Features::Namer.new(participatory_space.organization.available_locales, :sortitions).i18n_name,
       manifest_name: :sortitions,
       published_at: Time.current,
-      participatory_space: participatory_space,
-      settings: {
-        description: Decidim::Faker::Localized.sentence(10)
-      }
+      participatory_space: participatory_space
     )
   end
 end

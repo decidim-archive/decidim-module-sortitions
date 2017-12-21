@@ -7,12 +7,18 @@ describe "public view", type: :feature do
   let(:manifest_name) { "sortitions" }
 
   context "when shows the sortition feature" do
+    let!(:sortition) { create(:sortition, feature: feature) }
+
     before do
       visit_feature
     end
 
-    it "shows the sortition feature description" do
-      expect(page).to have_content(feature.settings.description[:en])
+    it "shows the sortition additional info" do
+      expect(page).to have_content(sortition.additional_info[:en])
+    end
+
+    it "shhows the sortition witnesses" do
+      expect(page).to have_content(sortition.witnesses[:en])
     end
   end
 

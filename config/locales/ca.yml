@@ -54,3 +54,6 @@ ca:
             verified_user_group: Organització verificada
           proposal:
             view_proposal: Veure proposta
+          index:
+            additional_info: Informació adicional
+            witnesses: Testimonis

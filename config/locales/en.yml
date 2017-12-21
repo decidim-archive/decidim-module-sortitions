@@ -54,3 +54,6 @@ en:
             verified_user_group: Verified organization
           proposal:
             view_proposal: View proposal
+          index:
+            additional_info: Additional information
+            witnesses: Witnesses
