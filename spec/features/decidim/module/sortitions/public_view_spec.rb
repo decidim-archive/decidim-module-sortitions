@@ -6,12 +6,20 @@ describe "public view", type: :feature do
   include_context "with a feature"
   let(:manifest_name) { "sortitions" }
 
-  before do
-    visit_feature
-  end
+  context "when shows the sortition feature" do
+    let!(:sortition) { create(:sortition, feature: feature) }
 
-  it "Shows the sortition feature description" do
-    expect(page).to have_content(feature.settings.description[:en])
+    before do
+      visit_feature
+    end
+
+    it "shows the sortition additional info" do
+      expect(page).to have_content(sortition.additional_info[:en])
+    end
+
+    it "shhows the sortition witnesses" do
+      expect(page).to have_content(sortition.witnesses[:en])
+    end
   end
 
   context "when sortition result" do
@@ -24,6 +32,7 @@ describe "public view", type: :feature do
 
     before do
       sortition.update(selected_proposals: Decidim::Module::Sortitions::Admin::Draw.for(sortition))
+      visit_feature
     end
 
     it "There are selected proposals" do

@@ -57,7 +57,17 @@ module Decidim
                   decidim_proposals_feature_id: decidim_proposals_feature_id,
                   decidim_category_id: decidim_category_id,
                   dice: dice,
-                  target_items: target_items
+                  target_items: target_items,
+                  witnesses: {
+                    en: "Witnesses",
+                    es: "Testigos",
+                    ca: "Testimonis"
+                  },
+                  additional_info: {
+                    en: "Additional information",
+                    es: "Información adicional",
+                    ca: "Informació adicional"
+                  }
                 }
               }
             end

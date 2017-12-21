@@ -6,6 +6,7 @@
   <%= render partial: "form", object: f %>
 
   <div class="button--double form-general-submit">
-    <%= f.submit t("sortition.new.create", scope: "decidim.admin") %>
+    <%= f.submit t("sortition.new.create", scope: "decidim.admin"),
+                 data: { confirm: t("sortition.new.confirm", scope: "decidim.admin")} %>
   </div>
 <% end %>

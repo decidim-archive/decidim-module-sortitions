@@ -5,14 +5,20 @@ module Decidim
     module Sortitions
       module Admin
         class SortitionForm < Form
+          include TranslatableAttributes
+
           mimic :sortition
 
           attribute :decidim_proposals_feature_id, Integer
           attribute :decidim_category_id, Integer
           attribute :dice, Integer
           attribute :target_items, Integer
+          translatable_attribute :witnesses, String
+          translatable_attribute :additional_info, String
 
           validates :decidim_proposals_feature_id, presence: true
+          validates :witnesses, translatable_presence: true
+          validates :additional_info, translatable_presence: true
           validates :dice,
                     presence: true,
                     numericality: {

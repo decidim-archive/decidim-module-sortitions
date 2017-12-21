@@ -12,25 +12,37 @@ shared_examples "manage sortitions" do
 
     it "can be related to a category" do
       within "form" do
-        expect(page).to have_content(/Category/i)
+        expect(page).to have_content(/Categories of the set of proposals in which you want to apply the draw/i)
       end
     end
 
     it "Requires a random number" do
       within "form" do
-        expect(page).to have_content(/Dice/i)
+        expect(page).to have_content(/Result of die roll/i)
       end
     end
 
     it "Requires the number of proposals to select" do
       within "form" do
-        expect(page).to have_content(/Quantity of proposals to select/i)
+        expect(page).to have_content(/Number of proposals to be selected/i)
       end
     end
 
     it "Requires the proposals feature" do
       within "form" do
-        expect(page).to have_content(/Proposals feature/i)
+        expect(page).to have_content(/Proposals set/i)
+      end
+    end
+
+    it "Requires the witnesses" do
+      within "form" do
+        expect(page).to have_content(/Witnesses/i)
+      end
+    end
+
+    it "Requires additional information" do
+      within "form" do
+        expect(page).to have_content(/Additional information/i)
       end
     end
 
@@ -43,8 +55,22 @@ shared_examples "manage sortitions" do
           fill_in :sortition_dice, with: sortition_dice
           fill_in :sortition_target_items, with: sortition_target_items
           select translated(proposal_feature.name), from: :sortition_decidim_proposals_feature_id
+          fill_in_i18n_editor(
+            :sortition_witnesses,
+            "#sortition-witnesses-tabs",
+            en: "Witnesses",
+            es: "Testigos",
+            ca: "Testimonis"
+          )
+          fill_in_i18n_editor(
+            :sortition_additional_info,
+            "#sortition-additional_info-tabs",
+            en: "additional info",
+            es: "Información adicional",
+            ca: "Informació adicional"
+          )
 
-          find("*[type=submit]").click
+          accept_confirm { find("*[type=submit]").click }
         end
 
         expect(page).to have_admin_callout("successfully")

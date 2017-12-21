@@ -12,13 +12,17 @@ module Decidim
           let(:proposal_feature) { create(:proposal_feature, participatory_space: participatory_process) }
           let(:dice) { ::Faker::Number.between(1, 6) }
           let(:target_items) { ::Faker::Number.number(2) }
+          let(:witnesses) { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
+          let(:additional_info) { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
 
           let(:params) do
             {
               decidim_proposals_feature_id: proposal_feature.id,
               decidim_category_id: nil,
               dice: dice,
-              target_items: target_items
+              target_items: target_items,
+              witnesses: witnesses,
+              additional_info: additional_info
             }
           end
 
