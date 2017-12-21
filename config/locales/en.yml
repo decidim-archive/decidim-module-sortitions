@@ -7,6 +7,8 @@ en:
         target_items: Number of proposals to be selected (indicates the number of proposals you want to be selected by drawing lots of the group of proposals you have previously chosen)
         decidim_category_id: Categories of the set of proposals in which you want to apply the draw
         decidim_proposals_feature_id: Proposals set
+        witnesses: Witnesses
+        additional_info: Additional information
   decidim:
     features:
       sortitions:
@@ -36,7 +38,7 @@ en:
         form:
           title: New sortition for proposals
           all_categories: All categories
-          select_proposal_feature: Select the proposals feature
+          select_proposal_feature: Select the proposals set
         create:
           success: Sortition successfully created
           error: There was an error creating a new sortition.

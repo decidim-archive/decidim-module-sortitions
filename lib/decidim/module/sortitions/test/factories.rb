@@ -17,6 +17,8 @@ FactoryBot.define do
     dice { Faker::Number.between(1, 6).to_i }
     target_items { Faker::Number.between(1, 5).to_i }
     request_timestamp { Time.now.utc }
+    witnesses { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
+    additional_info { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     selected_proposals { create_list(:proposal, target_items, feature: decidim_proposals_feature).pluck(:id) }
   end
 end

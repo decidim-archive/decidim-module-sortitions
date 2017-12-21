@@ -42,6 +42,8 @@ module Decidim
               decidim_category_id: form.decidim_category_id,
               dice: form.dice,
               target_items: form.target_items,
+              witnesses: form.witnesses,
+              additional_info: form.additional_info,
               selected_proposals: []
             )
           end

@@ -9,20 +9,44 @@ module Decidim
         describe SortitionForm do
           subject { form }
 
+          let(:organization) { build(:organization) }
+
           let(:decidim_proposals_feature_id) { ::Faker::Number.number(10) }
           let(:decidim_category_id) { ::Faker::Number.number(10) }
           let(:dice) { ::Faker::Number.between(1, 6) }
           let(:target_items) { ::Faker::Number.number(2) }
+          let(:witnesses) do
+            {
+              en: "Witnesses",
+              es: "Testigos",
+              ca: "Testimonis"
+            }
+          end
+          let(:additional_info) do
+            {
+              en: "Additional info",
+              es: "Información adicional",
+              ca: "Informació adicional"
+            }
+          end
           let(:params) do
             {
-              decidim_proposals_feature_id: decidim_proposals_feature_id,
-              decidim_category_id: decidim_category_id,
-              dice: dice,
-              target_items: target_items
+              sortition: {
+                decidim_proposals_feature_id: decidim_proposals_feature_id,
+                decidim_category_id: decidim_category_id,
+                dice: dice,
+                target_items: target_items,
+                witnesses_en: witnesses[:en],
+                witnesses_es: witnesses[:es],
+                witnesses_ca: witnesses[:ca],
+                additional_info_en: additional_info[:en],
+                additional_info_es: additional_info[:es],
+                additional_info_ca: additional_info[:ca]
+              }
             }
           end
 
-          let(:form) { described_class.from_params(params) }
+          let(:form) { described_class.from_params(params).with_context(current_organization: organization) }
 
           context "when everything is OK" do
             it { is_expected.to be_valid }
@@ -60,6 +84,18 @@ module Decidim
 
           context "when target items value is invalid" do
             let(:target_items) { "0" }
+
+            it { is_expected.to be_invalid }
+          end
+
+          context "when no witnesses" do
+            let(:witnesses) { { es: "", en: "", ca: "" } }
+
+            it { is_expected.to be_invalid }
+          end
+
+          context "when no additional info" do
+            let(:additional_info) { { es: "", en: "", ca: "" } }
 
             it { is_expected.to be_invalid }
           end

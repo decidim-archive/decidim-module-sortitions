@@ -7,6 +7,8 @@ ca:
         target_items: Nombre de propostes a seleccionar (indica el nombre de propostes que vols que siguin seleccionades mitjançant sorteig del conjunt de propostes que has escollit prèviament)
         decidim_category_id: Categories del conjunt de propostes en les que vols aplicar el sorteig
         decidim_proposals_feature_id: Conjunt de propostes
+        witnesses: Testimonis
+        additional_info: Informació adicional
   decidim:
     features:
       sortitions:
@@ -36,7 +38,7 @@ ca:
         form:
           title: Nou sorteig de propostes
           all_categories: Totes les categories
-          select_proposal_feature: Selecciona la funcionalitat de propostes
+          select_proposal_feature: Selecciona el conjunt de propostes
         create:
           success: Sorteig creat correctament.
           error: TS'ha produït un error creant el sorteig.
