@@ -8,6 +8,7 @@ module Decidim
       module Admin
         describe CreateSortition do
           let(:organization) { create(:organization) }
+          let(:author) { create(:user, :admin, organization: organization) }
           let(:participatory_process) { create(:participatory_process, organization: organization) }
           let(:proposal_feature) { create(:proposal_feature, participatory_space: participatory_process) }
           let(:dice) { ::Faker::Number.between(1, 6) }
@@ -29,7 +30,10 @@ module Decidim
           let(:sortition_feature) { create(:sortition_feature, participatory_space: participatory_process) }
 
           let(:context) do
-            { current_feature: sortition_feature }
+            {
+              current_feature: sortition_feature,
+              current_user: author
+            }
           end
 
           let(:form) { SortitionForm.from_params(sortition: params).with_context(context) }

@@ -40,6 +40,7 @@ module Decidim
               decidim_proposals_feature_id: form.decidim_proposals_feature_id,
               request_timestamp: Time.now.utc,
               decidim_category_id: form.decidim_category_id,
+              author: form.current_user,
               dice: form.dice,
               target_items: form.target_items,
               witnesses: form.witnesses,
