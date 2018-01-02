@@ -15,6 +15,8 @@ module Decidim
                    foreign_key: "decidim_proposals_feature_id",
                    class_name: "Decidim::Feature"
 
+        before_validation :initialize_reference
+
         def proposals
           Decidim::Proposals::Proposal.where(id: selected_proposals)
         end
@@ -29,6 +31,12 @@ module Decidim
 
         def seed
           request_timestamp.to_i * dice
+        end
+
+        private
+
+        def initialize_reference
+          self[:reference] ||= calculate_reference
         end
       end
     end
