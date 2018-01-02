@@ -1,13 +1,18 @@
-<div class="row column">
-  <div class="title-action">
-    <h2 class="title-action__title section-heading"><%=t ".additional_info" %></h2>
+<div class="row">
+  <div class="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
+    <%= feature_reference(sortition) %>
   </div>
-  <div class="section">
-    <%= sanitize translated_attribute sortition.additional_info %>
+  <div class="columns mediumlarge-8 mediumlarge-pull-4">
+    <div class="title-action">
+      <h2 class="title-action__title section-heading"><%=t ".additional_info" %></h2>
+    </div>
+    <div class="section">
+      <%= sanitize translated_attribute sortition.additional_info %>
+    </div>
   </div>
 </div>
 
-<div class="row column">
+<div class="row column">    
   <div class="title-action">
     <h2 class="title-action__title section-heading"><%=t ".witnesses" %></h2>
   </div>

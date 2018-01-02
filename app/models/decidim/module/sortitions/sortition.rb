@@ -7,6 +7,7 @@ module Decidim
       class Sortition < ApplicationRecord
         include Decidim::HasCategory
         include Decidim::HasFeature
+        include Decidim::HasReference
 
         feature_manifest_name "sortitions"
 
