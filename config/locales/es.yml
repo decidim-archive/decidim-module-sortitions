@@ -10,7 +10,14 @@ es:
         decidim_proposals_feature_id: Conjunto de propuestas
         witnesses: Testigos
         additional_info: Información adicional
+  pages:
+    home:
+      statistics:
+        sortitions_count: Sorteos
   decidim:
+    participatory_processes:
+      statistics:
+        sortitions_count: Sorteos
     features:
       sortitions:
         name: Sorteos
@@ -66,6 +73,28 @@ es:
             verified_user_group: Organización verificada
           proposal:
             view_proposal: Ver propuesta
-          index:
+          sortitions_count:
+            count:
+              one: 1 sorteo
+              other: "%{count} sorteos"
+          show:
             additional_info: Información adicional
             witnesses: Testigos
+          filters:
+            search: Buscar
+            category: Categoría
+            category_prompt: Selecciona una categoría
+          filters_small_view:
+            close_modal: Cerrar ventana
+            filter: Filtrar
+            filter_by: Filtrar por
+            unfold: Desplegar
+          orders:
+            label: 'Ordenar sorteos por:'
+            random: Aleatorio
+            recent: Reciente
+          sortition:
+            selected_proposals:
+              one: 1 propuesta seleccionada
+              other: "%{count} propuestas seleccionadas"
+            view_sortition: Ver sorteo

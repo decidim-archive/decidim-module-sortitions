@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "public view", type: :feature do
+describe "show", type: :feature do
   include_context "with a feature"
   let(:manifest_name) { "sortitions" }
 
@@ -11,6 +11,7 @@ describe "public view", type: :feature do
 
     before do
       visit_feature
+      click_link "View sortition"
     end
 
     it "shows the sortition additional info" do
@@ -33,6 +34,7 @@ describe "public view", type: :feature do
     before do
       sortition.update(selected_proposals: Decidim::Module::Sortitions::Admin::Draw.for(sortition))
       visit_feature
+      click_link "View sortition"
     end
 
     it "There are selected proposals" do

@@ -10,7 +10,14 @@ en:
         decidim_proposals_feature_id: Proposals set
         witnesses: Witnesses
         additional_info: Additional information
+  pages:
+    home:
+      statistics:
+        sortitions_count: Sortitions
   decidim:
+    participatory_processes:
+      statistics:
+        sortitions_count: Sortitions
     features:
       sortitions:
         name: Sortitions
@@ -66,6 +73,28 @@ en:
             verified_user_group: Verified organization
           proposal:
             view_proposal: View proposal
-          index:
+          sortitions_count:
+            count:
+              one: 1 sortition
+              other: "%{count} sortitions"
+          show:
             additional_info: Additional information
             witnesses: Witnesses
+          filters:
+            search: Search
+            category: Category
+            category_prompt: Select a category
+          filters_small_view:
+            close_modal: Close modal
+            filter: Filter
+            filter_by: Filter by
+            unfold: Unfold
+          orders:
+            label: 'Order sortitions by:'
+            random: Random
+            recent: Recent
+          sortition:
+            selected_proposals:
+              one: 1 proposal selected
+              other: "%{count} proposals selected"
+            view_sortition: View sortition

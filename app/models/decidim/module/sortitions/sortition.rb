@@ -42,6 +42,13 @@ module Decidim
           author&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
         end
 
+        def self.order_randomly(seed)
+          transaction do
+            connection.execute("SELECT setseed(#{connection.quote(seed)})")
+            order("RANDOM()").load
+          end
+        end
+
         private
 
         def initialize_reference

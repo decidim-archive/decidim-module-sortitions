@@ -10,7 +10,14 @@ ca:
         decidim_proposals_feature_id: Conjunt de propostes
         witnesses: Testimonis
         additional_info: Informació adicional
+  pages:
+    home:
+      statistics:
+        sortitions_count: Sortejos
   decidim:
+    participatory_processes:
+      statistics:
+        sortitions_count: Sortejos
     features:
       sortitions:
         name: Sortejos
@@ -66,6 +73,28 @@ ca:
             verified_user_group: Organització verificada
           proposal:
             view_proposal: Veure proposta
-          index:
+          sortitions_count:
+            count:
+              one: 1 sorteig
+              other: "%{count} sortejos"
+          show:
             additional_info: Informació adicional
             witnesses: Testimonis
+          filters:
+            search: Cerca
+            category: Categoria
+            category_prompt: Selecciona una categoria
+          filters_small_view:
+            close_modal: Tancar finestra
+            filter: Filtra
+            filter_by: Filtrar per
+            unfold: Desplegar
+          orders:
+            label: 'Ordenar sortejos per:'
+            random: Aleatori
+            recent: Recent
+          sortition:
+            selected_proposals:
+              one: 1 proposta seleccionada.
+              other: "%{count} propostes seleccionades"
+            view_sortition: Vore sorteig

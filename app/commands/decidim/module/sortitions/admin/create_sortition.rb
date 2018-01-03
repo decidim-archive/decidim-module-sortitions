@@ -24,6 +24,7 @@ module Decidim
 
             ActiveRecord::Base.transaction do
               sortition = create_sortition
+              categorize(sortition) if form.decidim_category_id.present?
               select_proposals_for(sortition)
 
               broadcast(:ok, sortition)
@@ -40,13 +41,19 @@ module Decidim
               title: form.title,
               decidim_proposals_feature_id: form.decidim_proposals_feature_id,
               request_timestamp: Time.now.utc,
-              decidim_category_id: form.decidim_category_id,
               author: form.current_user,
               dice: form.dice,
               target_items: form.target_items,
               witnesses: form.witnesses,
               additional_info: form.additional_info,
               selected_proposals: []
+            )
+          end
+
+          def categorize(sortition)
+            Decidim::Categorization.create!(
+              decidim_category_id: form.decidim_category_id,
+              categorizable: sortition
             )
           end
 

@@ -16,10 +16,11 @@ module Decidim
           let(:witnesses) { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
           let(:additional_info) { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
           let(:title) { Decidim::Faker::Localized.sentence(3) }
+          let(:category) { create(:category, participatory_space: participatory_process) }
           let(:params) do
             {
               decidim_proposals_feature_id: proposal_feature.id,
-              decidim_category_id: nil,
+              decidim_category_id: category.id,
               dice: dice,
               title: title,
               target_items: target_items,
@@ -81,6 +82,12 @@ module Decidim
               command.call
               sortition = Sortition.where(feature: sortition_feature).last
               expect(sortition.selected_proposals).not_to be_empty
+            end
+
+            it "Has a category" do
+              command.call
+              sortition = Sortition.where(feature: sortition_feature).last
+              expect(sortition.category).to eq(category)
             end
           end
         end
