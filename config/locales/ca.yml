@@ -3,6 +3,7 @@ ca:
   activemodel:
     attributes:
       sortition:
+        title: Títol
         dice: Resultat de la tirada de dau (tira un dau de 6 cares (o busca una altra manera aleatòria de generar un número de l'1 al 6) i introdueix aquí, davant de testimoni el nombre resultant, això contribueix a la qualitat i garanties de l'aleatorietat del resultat
         target_items: Nombre de propostes a seleccionar (indica el nombre de propostes que vols que siguin seleccionades mitjançant sorteig del conjunt de propostes que has escollit prèviament)
         decidim_category_id: Categories del conjunt de propostes en les que vols aplicar el sorteig
@@ -16,34 +17,45 @@ ca:
         settings:
           global:
             description: Descripció
-    admin:
-      models:
-        sortition:
-          fields:
-            dice: Dau
-            request_timestamp: Hora del sorteig
-            target_items: Elements a seleccionar
-            seed: Llavor
-            category: Categoria
-            decidim_proposals_feature: Funcionalitat de propostes
-            similar_count: Sortejos similars
-      titles:
-        sortition: Resultat del sorteig
-        selected_proposals: Propostes seleccionades per sorteig
-      sortition:
-        new:
-          title: Nou sorteig
-          create: Crea
-          confirm: En prémer el botó Decidim gravarà el la data i hora (amb precisió de segons) i juntament amb la tirada de daus, aquesta informació servirà per generar una selecció aleatòria. L'acció serà irreversible, un cop premut el botó el resultat d'aquest sorteig es publicarà, juntament les dades introduïdes en aquest formulari i no es podran modificar, si us plau revisa a consciència el contingut
-        form:
-          title: Nou sorteig de propostes
-          all_categories: Totes les categories
-          select_proposal_feature: Selecciona el conjunt de propostes
-        create:
-          success: Sorteig creat correctament.
-          error: TS'ha produït un error creant el sorteig.
     module:
       sortitions:
+        admin:
+          actions:
+            new: Nou
+            show: Detalls del sorteig
+          models:
+            sortition:
+              name:
+                one: Sorteig
+                other: Sortejos
+              fields:
+                id: Identificador
+                title: Títol
+                reference: Referència
+                dice: Dau
+                request_timestamp: Hora del sorteig
+                target_items: Elements a seleccionar
+                seed: Llavor
+                category: Categoria
+                decidim_proposals_feature: Funcionalitat de propostes
+                similar_count: Sortejos similars
+                created_at: Data de creació
+          sortitions:
+            index:
+              title: Sortejos
+            new:
+              title: Nou sorteig
+              create: Crea
+              confirm: En prémer el botó Decidim gravarà el la data i hora (amb precisió de segons) i juntament amb la tirada de daus, aquesta informació servirà per generar una selecció aleatòria. L'acció serà irreversible, un cop premut el botó el resultat d'aquest sorteig es publicarà, juntament les dades introduïdes en aquest formulari i no es podran modificar, si us plau revisa a consciència el contingut
+            form:
+              title: Nou sorteig de propostes
+              all_categories: Totes les categories
+              select_proposal_feature: Selecciona el conjunt de propostes
+            create:
+              success: Sorteig creat correctament.
+              error: TS'ha produït un error creant el sorteig.
+            show:
+              selected_proposals: Propostes seleccionades per sorteig
         sortitions:
           count:
             proposals_count:

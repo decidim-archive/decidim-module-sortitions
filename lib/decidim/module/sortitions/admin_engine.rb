@@ -12,9 +12,9 @@ module Decidim
         paths["db/migrate"] = nil
 
         routes do
-          resources :sortitions, only: [:show, :new, :create]
+          resources :sortitions, only: [:index, :show, :new, :create]
 
-          root to: "sortitions#new"
+          root to: "sortitions#index"
         end
 
         initializer "decidim_module_sortitions_admin.inject_abilities_to_user" do |_app|

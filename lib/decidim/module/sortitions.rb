@@ -9,6 +9,13 @@ module Decidim
   module Module
     # Base module for this engine.
     module Sortitions
+      include ActiveSupport::Configurable
+
+      # Public setting that defines how many elements will be shown
+      # per page inside the administration view.
+      config_accessor :items_per_page do
+        15
+      end
     end
   end
 end

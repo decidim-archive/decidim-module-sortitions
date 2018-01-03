@@ -37,6 +37,7 @@ module Decidim
           def create_sortition
             Sortition.create!(
               feature: form.current_feature,
+              title: form.title,
               decidim_proposals_feature_id: form.decidim_proposals_feature_id,
               request_timestamp: Time.now.utc,
               decidim_category_id: form.decidim_category_id,

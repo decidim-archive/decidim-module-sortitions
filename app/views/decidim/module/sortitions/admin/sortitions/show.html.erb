@@ -1,7 +1,7 @@
 <div class="card" id="sortition">
   <div class="card-divider">
     <h2 class="card-title">
-      <%=t "decidim.admin.titles.sortition" %>
+      <%= translated_attribute(sortition.title) %>
     </h2>
   </div>
   <div class="card-section">
@@ -9,13 +9,12 @@
       <table class="table-list sortition">
         <thead>
           <tr>
-            <th><%= t("models.sortition.fields.request_timestamp", scope: "decidim.admin") %></th>
-            <th><%= t("models.sortition.fields.dice", scope: "decidim.admin") %></th>
-            <th><%= t("models.sortition.fields.target_items", scope: "decidim.admin") %></th>
-            <th><%= t("models.sortition.fields.category", scope: "decidim.admin") %></th>
-            <th><%= t("models.sortition.fields.decidim_proposals_feature", scope: "decidim.admin") %></th>
-            <th><%= t("models.sortition.fields.seed", scope: "decidim.admin") %></th>
-            <th><%= t("models.sortition.fields.similar_count", scope: "decidim.admin") %></th>
+            <th><%= t("models.sortition.fields.request_timestamp", scope: "decidim.module.sortitions.admin") %></th>
+            <th><%= t("models.sortition.fields.dice", scope: "decidim.module.sortitions.admin") %></th>
+            <th><%= t("models.sortition.fields.target_items", scope: "decidim.module.sortitions.admin") %></th>
+            <th><%= t("models.sortition.fields.category", scope: "decidim.module.sortitions.admin") %></th>
+            <th><%= t("models.sortition.fields.decidim_proposals_feature", scope: "decidim.module.sortitions.admin") %></th>
+            <th><%= t("models.sortition.fields.seed", scope: "decidim.module.sortitions.admin") %></th>
             <th></th>
           </tr>
         </thead>
@@ -27,7 +26,6 @@
             <td><%= sortition_category sortition %></td>
             <td><%= translated_attribute sortition.decidim_proposals_feature.name %></td>
             <td><%= sortition.seed %></td>
-            <td><%= sortition.similar_count %></td>
             <td></td>
           </tr>
         </tbody>
@@ -39,7 +37,7 @@
       <table class="table-list proposals">
         <thead>
           <tr>
-            <th><%=t "decidim.admin.titles.selected_proposals" %></th>
+            <th><%=t ".selected_proposals" %></th>
             <th></th>
           </tr>
         </thead>

@@ -9,6 +9,7 @@ module Decidim
 
           mimic :sortition
 
+          translatable_attribute :title, String
           attribute :decidim_proposals_feature_id, Integer
           attribute :decidim_category_id, Integer
           attribute :dice, Integer
@@ -16,6 +17,7 @@ module Decidim
           translatable_attribute :witnesses, String
           translatable_attribute :additional_info, String
 
+          validates :title, translatable_presence: true
           validates :decidim_proposals_feature_id, presence: true
           validates :witnesses, translatable_presence: true
           validates :additional_info, translatable_presence: true
