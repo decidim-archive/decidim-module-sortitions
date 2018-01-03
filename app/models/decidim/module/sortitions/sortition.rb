@@ -7,12 +7,15 @@ module Decidim
       class Sortition < ApplicationRecord
         include Decidim::HasCategory
         include Decidim::HasFeature
+        include Decidim::HasReference
 
         feature_manifest_name "sortitions"
 
         belongs_to :decidim_proposals_feature,
                    foreign_key: "decidim_proposals_feature_id",
                    class_name: "Decidim::Feature"
+
+        before_validation :initialize_reference
 
         def proposals
           Decidim::Proposals::Proposal.where(id: selected_proposals)
@@ -28,6 +31,12 @@ module Decidim
 
         def seed
           request_timestamp.to_i * dice
+        end
+
+        private
+
+        def initialize_reference
+          self[:reference] ||= calculate_reference
         end
       end
     end
