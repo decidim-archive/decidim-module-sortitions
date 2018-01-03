@@ -92,6 +92,11 @@ module Decidim
                                                 participatory_process_slug: Sortition.last.feature.participatory_space.slug,
                                                 id: Sortition.last.id
               end
+
+              it "Sortition author is the current user" do
+                post :create, params: params
+                expect(Sortition.last.author).to eq(user)
+              end
             end
           end
         end

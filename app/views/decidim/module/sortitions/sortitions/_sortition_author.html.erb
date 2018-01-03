@@ -1,0 +1,23 @@
+<div class="author-data__main">
+  <div class="author author--inline">
+    <span class="author__avatar author__avatar--small">
+      <%= image_tag sortition.author_avatar_url %>
+    </span>
+    <span class="author__name">
+      <% if sortition.author&.deleted? %>
+        <span class="label label--small label--basic">
+          <%= t('.deleted') %>
+        </span>
+      <% else %>
+        <%= sortition.author_name %>
+      <% end %>
+    </span>
+    <% if sortition.user_group && sortition.user_group.verified? %>
+      &nbsp;
+      <span class="label label--highlight label--small">
+        <%= t ".verified_user_group" %>
+      </span>
+    <% end %>
+    <%= l sortition.created_at, format: :decidim_short %>
+  </div>
+</div>

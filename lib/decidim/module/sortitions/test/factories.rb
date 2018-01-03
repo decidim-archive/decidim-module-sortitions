@@ -13,6 +13,11 @@ FactoryBot.define do
   factory :sortition, class: "Decidim::Module::Sortitions::Sortition" do
     feature { create(:sortition_feature) }
     decidim_proposals_feature { create(:proposal_feature, organization: feature.organization) }
+
+    author do
+      create(:user, organization: feature.organization) if feature
+    end
+
     category nil
     dice { Faker::Number.between(1, 6).to_i }
     target_items { Faker::Number.between(1, 5).to_i }

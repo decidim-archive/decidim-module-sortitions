@@ -6,6 +6,7 @@ module Decidim
       # Model that encapsulates the parameters of a sortion
       class Sortition < ApplicationRecord
         include Decidim::HasCategory
+        include Decidim::Authorable
         include Decidim::HasFeature
         include Decidim::HasReference
 
@@ -31,6 +32,14 @@ module Decidim
 
         def seed
           request_timestamp.to_i * dice
+        end
+
+        def author_name
+          author&.name
+        end
+
+        def author_avatar_url
+          author&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
         end
 
         private
