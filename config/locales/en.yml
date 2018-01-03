@@ -3,47 +3,66 @@ en:
   activemodel:
     attributes:
       sortition:
+        title: Title
         dice: Result of die roll (roll a 6-sided die (or look for another random way to generate a number from 1 to 6) and enter here, as opposed to witness the resulting number, this contributes to the quality and guarantees of the randomness of the result
         target_items: Number of proposals to be selected (indicates the number of proposals you want to be selected by drawing lots of the group of proposals you have previously chosen)
         decidim_category_id: Categories of the set of proposals in which you want to apply the draw
         decidim_proposals_feature_id: Proposals set
         witnesses: Witnesses
         additional_info: Additional information
+  pages:
+    home:
+      statistics:
+        sortitions_count: Sortitions
   decidim:
+    participatory_processes:
+      statistics:
+        sortitions_count: Sortitions
     features:
       sortitions:
         name: Sortitions
         settings:
           global:
             description: Description
-    admin:
-      models:
-        sortition:
-          fields:
-            dice: Dice
-            request_timestamp: Draw time
-            target_items: Items to select
-            seed: Seed
-            category: Category
-            decidim_proposals_feature: Proposals feature
-            similar_count: Similar sortitions
-      titles:
-        sortition: Sortition results
-        selected_proposals: Proposals selected for draw
-      sortition:
-        new:
-          title: New sortition
-          create: Create
-          confirm: By pressing the next button Decidim will record the date and time (with precision of seconds) and together with the dice roll, this information will be used to generate a random selection. The action will be irreversible, once the button is clicked the result of this draw will be published, together with the data entered in this form and can not be modified, please check the content carefully
-        form:
-          title: New sortition for proposals
-          all_categories: All categories
-          select_proposal_feature: Select the proposals set
-        create:
-          success: Sortition successfully created
-          error: There was an error creating a new sortition.
     module:
       sortitions:
+        admin:
+          actions:
+            new: New
+            show: Sortition details
+          models:
+            sortition:
+              name:
+                one: Sortition
+                other: Sortitions
+              fields:
+                id: Identifier
+                title: Title
+                reference: Reference
+                dice: Dice
+                request_timestamp: Draw time
+                target_items: Items to select
+                seed: Seed
+                category: Category
+                decidim_proposals_feature: Proposals feature
+                similar_count: Similar sortitions
+                created_at: Creation date
+          sortitions:
+            index:
+              title: Sortitions
+            new:
+              title: New sortition
+              create: Create
+              confirm: By pressing the next button Decidim will record the date and time (with precision of seconds) and together with the dice roll, this information will be used to generate a random selection. The action will be irreversible, once the button is clicked the result of this draw will be published, together with the data entered in this form and can not be modified, please check the content carefully
+            form:
+              title: New sortition for proposals
+              all_categories: All categories
+              select_proposal_feature: Select the proposals set
+            create:
+              success: Sortition successfully created
+              error: There was an error creating a new sortition.
+            show:
+              selected_proposals: Proposals selected for draw
         sortitions:
           count:
             proposals_count:
@@ -54,6 +73,28 @@ en:
             verified_user_group: Verified organization
           proposal:
             view_proposal: View proposal
-          index:
+          sortitions_count:
+            count:
+              one: 1 sortition
+              other: "%{count} sortitions"
+          show:
             additional_info: Additional information
             witnesses: Witnesses
+          filters:
+            search: Search
+            category: Category
+            category_prompt: Select a category
+          filters_small_view:
+            close_modal: Close modal
+            filter: Filter
+            filter_by: Filter by
+            unfold: Unfold
+          orders:
+            label: 'Order sortitions by:'
+            random: Random
+            recent: Recent
+          sortition:
+            selected_proposals:
+              one: 1 proposal selected
+              other: "%{count} proposals selected"
+            view_sortition: View sortition

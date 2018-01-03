@@ -15,6 +15,13 @@ module Decidim
           let(:decidim_category_id) { ::Faker::Number.number(10) }
           let(:dice) { ::Faker::Number.between(1, 6) }
           let(:target_items) { ::Faker::Number.number(2) }
+          let(:title) do
+            {
+              en: "Title",
+              es: "Título",
+              ca: "Títol"
+            }
+          end
           let(:witnesses) do
             {
               en: "Witnesses",
@@ -36,6 +43,9 @@ module Decidim
                 decidim_category_id: decidim_category_id,
                 dice: dice,
                 target_items: target_items,
+                title_en: title[:en],
+                title_es: title[:es],
+                title_ca: title[:ca],
                 witnesses_en: witnesses[:en],
                 witnesses_es: witnesses[:es],
                 witnesses_ca: witnesses[:ca],
@@ -84,6 +94,12 @@ module Decidim
 
           context "when target items value is invalid" do
             let(:target_items) { "0" }
+
+            it { is_expected.to be_invalid }
+          end
+
+          context "when no title" do
+            let(:title) { { es: "", en: "", ca: "" } }
 
             it { is_expected.to be_invalid }
           end

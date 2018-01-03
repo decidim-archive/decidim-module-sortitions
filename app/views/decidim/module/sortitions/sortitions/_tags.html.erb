@@ -1,0 +1,7 @@
+<% if sortition.category.present? %>
+<ul class="tags tags--sortition" >
+  <li>
+    <%= link_to translated_attribute(sortition.category.name), sortitions_path(filter: { category_id: [sortition.category.id] }) %>
+  </li>
+</ul>
+<% end %>

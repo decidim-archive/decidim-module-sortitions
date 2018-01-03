@@ -8,6 +8,13 @@ shared_examples "manage sortitions" do
 
     before do
       visit_feature_admin
+      click_link "New"
+    end
+
+    it "Requires a title" do
+      within "form" do
+        expect(page).to have_content(/Title/i)
+      end
     end
 
     it "can be related to a category" do
@@ -70,10 +77,19 @@ shared_examples "manage sortitions" do
             ca: "Informació adicional"
           )
 
+          fill_in_i18n(
+            :sortition_title,
+            "#sortition-title-tabs",
+            en: "Title",
+            es: "Título",
+            ca: "Títol"
+          )
+
           accept_confirm { find("*[type=submit]").click }
         end
 
         expect(page).to have_admin_callout("successfully")
+        expect(page).to have_content(/Title/i)
 
         proposal = Decidim::Module::Sortitions::Sortition.last
         within ".sortition" do
@@ -86,7 +102,6 @@ shared_examples "manage sortitions" do
           expect(page).to have_content(translated(proposal_feature.name))
           expect(page).to have_content(/Seed/i)
           expect(page).to have_content(proposal.seed)
-          expect(page).to have_content(/Similar sortitions/i)
         end
 
         within ".proposals" do

@@ -58,6 +58,11 @@ module Decidim
                   decidim_category_id: decidim_category_id,
                   dice: dice,
                   target_items: target_items,
+                  title: {
+                    en: "Title",
+                    es: "Título",
+                    ca: "Títol"
+                  },
                   witnesses: {
                     en: "Witnesses",
                     es: "Testigos",

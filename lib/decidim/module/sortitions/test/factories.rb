@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "decidim/faker/localized"
 require "decidim/core/test/factories"
 require "decidim/participatory_processes/test/factories"
 
@@ -14,11 +15,11 @@ FactoryBot.define do
     feature { create(:sortition_feature) }
     decidim_proposals_feature { create(:proposal_feature, organization: feature.organization) }
 
+    title { Decidim::Faker::Localized.sentence(3) }
     author do
       create(:user, organization: feature.organization) if feature
     end
 
-    category nil
     dice { Faker::Number.between(1, 6).to_i }
     target_items { Faker::Number.between(1, 5).to_i }
     request_timestamp { Time.now.utc }

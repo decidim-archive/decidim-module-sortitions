@@ -17,7 +17,7 @@ module Decidim
           def sortition_category(sortition)
             return translated_attribute sortition.category&.name if sortition.category
 
-            I18n.t("sortition.form.all_categories", scope: "decidim.admin")
+            I18n.t("sortitions.form.all_categories", scope: "decidim.module.sortitions.admin")
           end
         end
       end

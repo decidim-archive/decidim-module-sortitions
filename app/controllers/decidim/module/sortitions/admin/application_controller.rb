@@ -13,7 +13,11 @@ module Decidim
           helper_method :sortitions, :sortition
 
           def sortitions
-            @sortitions ||= Sortition.where(feature: current_feature)
+            @sortitions ||= Decidim::Module::Sortitions::FilteredSortitions
+                            .for(current_feature)
+                            .order(created_at: :desc)
+                            .page(params[:page])
+                            .per(Decidim::Module::Sortitions.items_per_page)
           end
 
           def sortition

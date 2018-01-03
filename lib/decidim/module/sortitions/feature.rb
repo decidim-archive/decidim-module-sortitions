@@ -27,8 +27,8 @@ Decidim.register_feature(:sortitions) do |feature|
   #   resource.template = "decidim/<engine_name>/<resource_view_folder>/linked_<resource_name_plural>"
   # end
 
-  feature.register_stat :some_stat do |features, start_at, end_at|
-    # Register some stat number to the application
+  feature.register_stat :sortitions_count, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, start_at, end_at|
+    Decidim::Module::Sortitions::FilteredSortitions.for(features, start_at, end_at).count
   end
 
   feature.seeds do |participatory_space|
