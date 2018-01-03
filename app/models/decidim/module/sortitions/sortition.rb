@@ -18,6 +18,11 @@ module Decidim
 
         before_validation :initialize_reference
 
+        scope :categorized_as, lambda { |category_id|
+          includes(:categorization)
+            .where("decidim_categorizations.decidim_category_id" => category_id)
+        }
+
         def proposals
           Decidim::Proposals::Proposal.where(id: selected_proposals)
         end
@@ -25,7 +30,7 @@ module Decidim
         def similar_count
           Sortition.where(feature: feature)
                    .where(decidim_proposals_feature: decidim_proposals_feature)
-                   .where(category: category)
+                   .categorized_as(category&.id)
                    .where(target_items: target_items)
                    .count
         end

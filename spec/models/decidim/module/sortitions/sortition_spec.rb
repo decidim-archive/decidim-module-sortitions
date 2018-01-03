@@ -20,6 +20,12 @@ module Decidim
 
         describe "similar_count" do
           let(:sortition) { create(:sortition) }
+          let(:category) { create(:category, participatory_space: sortition.feature.participatory_space) }
+
+          before do
+            Decidim::Categorization.create!(decidim_category_id: category.id, categorizable: sortition)
+            sortition.reload
+          end
 
           context "when first sortition" do
             it "is one" do
@@ -34,14 +40,14 @@ module Decidim
               create_list(:sortition, repetitions,
                           feature: sortition.feature,
                           decidim_proposals_feature: sortition.decidim_proposals_feature,
-                          category: sortition.category,
-                          target_items: sortition.target_items)
+                          target_items: sortition.target_items).each do |sortition|
+                Decidim::Categorization.create!(decidim_category_id: category.id, categorizable: sortition)
+              end
 
               create_list(:sortition, repetitions,
                           feature: sortition.feature,
                           decidim_proposals_feature: sortition.decidim_proposals_feature,
-                          category: sortition.category,
-                          target_items: sortition.target_items + 1)
+                          target_items: sortition.target_items)
             end
 
             it "Counts similar sortitions" do
