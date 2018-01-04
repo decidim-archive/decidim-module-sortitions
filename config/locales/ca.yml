@@ -88,10 +88,15 @@ ca:
           show:
             additional_info: Informació adicional
             witnesses: Testimonis
+            cancelled: Sorteig cancel·lat
           filters:
             search: Cerca
             category: Categoria
             category_prompt: Selecciona una categoria
+            state: Estat
+            all: Tots
+            active: Actius
+            cancelled: Cancelats
           filters_small_view:
             close_modal: Tancar finestra
             filter: Filtra

@@ -17,7 +17,7 @@ FactoryBot.define do
 
     title { Decidim::Faker::Localized.sentence(3) }
     author do
-      create(:user, organization: feature.organization) if feature
+      create(:user, :admin, organization: feature.organization) if feature
     end
 
     dice { Faker::Number.between(1, 6).to_i }
@@ -26,5 +26,11 @@ FactoryBot.define do
     witnesses { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     additional_info { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     selected_proposals { create_list(:proposal, target_items, feature: decidim_proposals_feature).pluck(:id) }
+
+    trait :cancelled do
+      cancelled_on { Time.now.utc }
+      cancel_reason { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
+      cancelled_by_user { create(:user, :admin, organization: feature.organization) if feature }
+    end
   end
 end

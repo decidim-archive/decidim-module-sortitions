@@ -26,6 +26,18 @@ module Decidim
             )
         end
 
+        # Handle the state filter
+        def search_state
+          case state
+          when "active"
+            query.active
+          when "cancelled"
+            query.cancelled
+          else # Assume 'all'
+            query
+          end
+        end
+
         private
 
         def current_locale

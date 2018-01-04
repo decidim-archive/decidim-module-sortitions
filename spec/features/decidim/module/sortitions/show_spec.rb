@@ -18,7 +18,7 @@ describe "show", type: :feature do
       expect(page).to have_content(sortition.additional_info[:en])
     end
 
-    it "shhows the sortition witnesses" do
+    it "shows the sortition witnesses" do
       expect(page).to have_content(sortition.witnesses[:en])
     end
   end
@@ -45,6 +45,20 @@ describe "show", type: :feature do
       sortition.proposals.each do |p|
         expect(page).to have_content(translated(p.title))
       end
+    end
+  end
+
+  context "when cancelled sortition" do
+    let!(:sortition) { create(:sortition, :cancelled, feature: feature) }
+
+    before do
+      visit_feature
+      choose("Cancelled")
+      click_link "View sortition"
+    end
+
+    it "shows the cancel reasons" do
+      expect(page).to have_content(sortition.cancel_reason[:en])
     end
   end
 end

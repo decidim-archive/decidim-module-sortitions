@@ -36,7 +36,8 @@ module Decidim
         def default_filter_params
           {
             search_text: "",
-            category_id: ""
+            category_id: "",
+            state: "active"
           }
         end
       end

@@ -88,10 +88,15 @@ es:
           show:
             additional_info: Información adicional
             witnesses: Testigos
+            cancelled: Sorteo cancelado
           filters:
             search: Buscar
             category: Categoría
             category_prompt: Selecciona una categoría
+            state: Estado
+            all: Todos
+            active: Activos
+            cancelled: Cancelados
           filters_small_view:
             close_modal: Cerrar ventana
             filter: Filtrar

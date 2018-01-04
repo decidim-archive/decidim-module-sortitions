@@ -88,10 +88,15 @@ en:
           show:
             additional_info: Additional information
             witnesses: Witnesses
+            cancelled: Cancelled sortition
           filters:
             search: Search
             category: Category
             category_prompt: Select a category
+            state: State
+            all: All
+            active: Active
+            cancelled: Cancelled
           filters_small_view:
             close_modal: Close modal
             filter: Filter
