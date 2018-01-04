@@ -52,8 +52,7 @@ describe "show", type: :feature do
     let!(:sortition) { create(:sortition, :cancelled, feature: feature) }
 
     before do
-      visit_feature
-      choose("Cancelled")
+      page.visit "#{main_feature_path(feature)}?filter[state]=cancelled"
       click_link "View sortition"
     end
 
