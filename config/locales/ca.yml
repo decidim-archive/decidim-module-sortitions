@@ -30,6 +30,7 @@ ca:
           actions:
             new: Nou
             show: Detalls del sorteig
+            destroy: Cancela el sorteig
           models:
             sortition:
               name:
@@ -63,6 +64,13 @@ ca:
               error: TS'ha produït un error creant el sorteig.
             show:
               selected_proposals: Propostes seleccionades per sorteig
+            confirm_destroy:
+              title: Cancelació del sorteig
+              confirm_destroy: Segur que vols cancelar aquest sorteig?
+              destroy: Cancela el sorteig
+            destroy:
+              success: El sorteig s'ha cancel·lat correctament
+              error: No s'ha pogut cancel·lar el sorteig
         sortitions:
           count:
             proposals_count:

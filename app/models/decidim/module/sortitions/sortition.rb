@@ -16,6 +16,11 @@ module Decidim
                    foreign_key: "decidim_proposals_feature_id",
                    class_name: "Decidim::Feature"
 
+        belongs_to :cancelled_by_user,
+                   foreign_key: "cancelled_by_user_id",
+                   class_name: "Decidim::User",
+                   optional: true
+
         before_validation :initialize_reference
 
         scope :categorized_as, lambda { |category_id|
@@ -45,6 +50,10 @@ module Decidim
 
         def author_avatar_url
           author&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
+        end
+
+        def cancelled?
+          cancelled_on.present?
         end
 
         def self.order_randomly(seed)

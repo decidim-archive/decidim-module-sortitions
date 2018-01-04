@@ -30,6 +30,7 @@ en:
           actions:
             new: New
             show: Sortition details
+            destroy: Cancel the sortition
           models:
             sortition:
               name:
@@ -63,6 +64,13 @@ en:
               error: There was an error creating a new sortition.
             show:
               selected_proposals: Proposals selected for draw
+            confirm_destroy:
+              title: Cancellation of the sortition
+              confirm_destroy: Are you sure you want to cancel this sortition?
+              destroy: Cancel sortition
+            destroy:
+              success: Sortition successfully cancelled
+              error: Can not cancel the sortition.
         sortitions:
           count:
             proposals_count:

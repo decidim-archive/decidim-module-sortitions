@@ -8,4 +8,5 @@ describe "Admin manages sortitions", type: :feature do
   include_context "when managing a feature as an admin"
 
   it_behaves_like "manage sortitions"
+  it_behaves_like "cancel sortitions"
 end

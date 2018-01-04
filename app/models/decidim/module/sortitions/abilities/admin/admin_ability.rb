@@ -12,6 +12,10 @@ module Decidim
               super
 
               can :manage, Sortition
+              cannot :destroy, Sortition
+              can :destroy, Sortition do |sortition|
+                !sortition.cancelled?
+              end
             end
           end
         end

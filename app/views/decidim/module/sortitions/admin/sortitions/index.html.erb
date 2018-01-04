@@ -28,7 +28,17 @@
             <td><%= translated_attribute sortition.title %></td>
             <td><%=l sortition.created_at, format: :short %></td>
             <td class="table-list__actions">
-              <%= icon_link_to "eye", sortition_path(sortition), t("actions.show", scope: "decidim.module.sortitions.admin"), class: "action-icon--preview" %>
+              <%= icon_link_to "eye",
+                               sortition_path(sortition),
+                               t("actions.show", scope: "decidim.module.sortitions.admin"),
+                               class: "action-icon--preview" %>
+
+              <% if can? :destroy, sortition %>
+                <%= icon_link_to "circle-x",
+                                 confirm_destroy_sortition_path(sortition),
+                                 t("actions.destroy", scope: "decidim.module.sortitions.admin"),
+                                 class: "action-icon--remove" %>
+              <% end %>
             </td>
           </tr>
           <% end %>
