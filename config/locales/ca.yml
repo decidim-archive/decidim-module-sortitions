@@ -89,6 +89,16 @@ ca:
             additional_info: Informació adicional
             witnesses: Testimonis
             cancelled: Sorteig cancel·lat
+            introduction: >
+              Aquesta pàgina conté els resultats del sorteig %{reference}. Per mitjà d'aquest sorteig,
+              %{target_items} propostes s'han seleccionat a l'atzar i amb la mateixa distribució de
+              probabilitat del conjunt de propostes que es mostren a continuació. Juntament amb els resultats,
+              La informació que es mostra en aquesta pàgina proporciona tota la informació requerida per maximitzar les
+              garanties i reproduir els resultats. La clau per a la qualitat d'aquesta classificació és la doble
+              aleatorietat proporcionada pel llançament d'un dau (verificat per testimonis) i el temps exacte de
+              la classificació que proporciona l'entrada per a un algorisme que genera una selecció aleatòria.
+              La sembra de temps per a la classificació és tan precisa (segons) que és impossible de controlar pels
+              humans proporcionant així una doble entrada "incontrolable" per garantir un resultat just.
           filters:
             search: Cerca
             category: Categoria
