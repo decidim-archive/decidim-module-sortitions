@@ -104,6 +104,65 @@ module Decidim
               end
             end
           end
+
+          describe "confirm_destroy" do
+            let(:sortition) { create(:sortition) }
+            let(:params) do
+              {
+                feature_id: sortition.feature.id,
+                participatory_process_slug: sortition.feature.participatory_space.slug,
+                id: sortition.id
+              }
+            end
+
+            it "renders the confirm_destroy template" do
+              get :confirm_destroy, params: params
+              expect(response).to render_template(:confirm_destroy)
+            end
+          end
+
+          describe "destroy" do
+            let(:cancel_reason) do
+              {
+                en: "Cancel reason",
+                es: "Motivo de la cancelación",
+                ca: "Motiu de la cancelació"
+              }
+            end
+            let(:params) do
+              {
+                participatory_process_slug: feature.participatory_space.slug,
+                id: sortition.id,
+                sortition: {
+                  cancel_reason: cancel_reason
+                }
+              }
+            end
+
+            context "with invalid params" do
+              let(:cancel_reason) do
+                {
+                  en: "",
+                  es: "",
+                  ca: ""
+                }
+              end
+
+              it "renders the confirm_destroy template" do
+                delete :destroy, params: params
+                expect(response).to render_template(:confirm_destroy)
+              end
+            end
+
+            context "with valid params" do
+              it "redirects to sortitions list newly created sortition" do
+                delete :destroy, params: params
+                expect(response).to redirect_to action: :index,
+                                                feature_id: sortition.feature.id,
+                                                participatory_process_slug: sortition.feature.participatory_space.slug
+              end
+            end
+          end
         end
       end
     end

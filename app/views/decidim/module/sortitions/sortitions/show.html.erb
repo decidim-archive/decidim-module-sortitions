@@ -3,7 +3,7 @@
     <div class="author-data">
       <%= render partial: "sortition_author", locals: { sortition: sortition } %>
     </div>
-    
+
     <%= feature_reference(sortition) %>
   </div>
   <div class="columns mediumlarge-8 mediumlarge-pull-4">
@@ -16,7 +16,23 @@
   </div>
 </div>
 
-<div class="row column">    
+<% if sortition.cancelled? %>
+<div class="row column">
+  <div class="title-action">
+    <h2 class="title-action__title section-heading"><%=t ".cancelled" %></h2>
+  </div>
+  <div class=section>
+    <div class="author-data">
+      <%= render partial: "sortition_cancel_author", locals: { sortition: sortition } %>
+    </div>
+  </div>
+  <div class=section>
+    <%= sanitize translated_attribute sortition.cancel_reason %>
+  </div>
+</div>
+<% end %>
+
+<div class="row column">
   <div class="title-action">
     <h2 class="title-action__title section-heading"><%=t ".witnesses" %></h2>
   </div>

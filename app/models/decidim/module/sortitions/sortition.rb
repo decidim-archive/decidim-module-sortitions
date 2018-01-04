@@ -16,12 +16,20 @@ module Decidim
                    foreign_key: "decidim_proposals_feature_id",
                    class_name: "Decidim::Feature"
 
+        belongs_to :cancelled_by_user,
+                   foreign_key: "cancelled_by_user_id",
+                   class_name: "Decidim::User",
+                   optional: true
+
         before_validation :initialize_reference
 
         scope :categorized_as, lambda { |category_id|
           includes(:categorization)
             .where("decidim_categorizations.decidim_category_id" => category_id)
         }
+
+        scope :active, -> { where(cancelled_on: nil) }
+        scope :cancelled, -> { where.not(cancelled_on: nil) }
 
         def proposals
           Decidim::Proposals::Proposal.where(id: selected_proposals)
@@ -45,6 +53,14 @@ module Decidim
 
         def author_avatar_url
           author&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
+        end
+
+        def cancelled_by_user_avatar_url
+          cancelled_by_user&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
+        end
+
+        def cancelled?
+          cancelled_on.present?
         end
 
         def self.order_randomly(seed)

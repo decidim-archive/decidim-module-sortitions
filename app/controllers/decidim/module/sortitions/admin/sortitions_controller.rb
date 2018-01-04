@@ -36,10 +36,35 @@ module Decidim
             end
           end
 
+          def confirm_destroy
+            authorize! :destroy, sortition
+            @form = destroy_sortition_form.from_model(sortition, current_participatory_space: current_participatory_space)
+          end
+
+          def destroy
+            authorize! :destroy, sortition
+            @form = destroy_sortition_form.from_params(params, current_participatory_space: current_participatory_space)
+            DestroySortition.call(@form) do
+              on(:ok) do |sortition|
+                flash[:notice] = I18n.t("sortitions.destroy.success", scope: "decidim.module.sortitions.admin")
+                redirect_to sortitions_path(feature_id: sortition.feature.id, participatory_process_slug: sortition.feature.participatory_space.slug)
+              end
+
+              on(:invalid) do
+                flash.now[:alert] = I18n.t("sortitions.destroy.error", scope: "decidim.module.sortitions.admin")
+                render :confirm_destroy
+              end
+            end
+          end
+
           private
 
           def sortition_form
             form(SortitionForm)
+          end
+
+          def destroy_sortition_form
+            form(DestroySortitionForm)
           end
 
           def proposal_features

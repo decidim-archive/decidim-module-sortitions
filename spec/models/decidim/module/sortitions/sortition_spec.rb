@@ -61,6 +61,18 @@ module Decidim
             expect(sortition.proposals).to eq(Decidim::Proposals::Proposal.where(id: sortition.selected_proposals))
           end
         end
+
+        describe "cancelled" do
+          it "is true when cancelled_on has value" do
+            sortition = build(:sortition, cancelled_on: Time.now.utc)
+            expect(sortition).to be_cancelled
+          end
+
+          it "is false when cancelled_on is nil" do
+            sortition = build(:sortition, cancelled_on: nil)
+            expect(sortition).not_to be_cancelled
+          end
+        end
       end
     end
   end

@@ -19,12 +19,14 @@ module Decidim
             described_class.new(
               feature: feature,
               search_text: search_text,
-              category_id: category_id
+              category_id: category_id,
+              state: state
             ).results
           end
 
           let(:search_text) { nil }
           let(:category_id) { nil }
+          let(:state) { "active" }
 
           it "only includes sortitions from the given feature" do
             other_sortition = create(:sortition)
@@ -53,6 +55,35 @@ module Decidim
               create_list(:sortition, 3, feature: feature)
 
               expect(subject.size).to eq(1)
+            end
+          end
+
+          describe "state filter" do
+            context "when Cancelled" do
+              let(:state) { "cancelled" }
+
+              it "Returns sortitions with the given state" do
+                create_list(:sortition, 3, :cancelled, feature: feature)
+                expect(subject.size).to eq(3)
+              end
+            end
+
+            context "when Active" do
+              let(:state) { "active" }
+
+              it "Returns sortitions with the given state" do
+                create_list(:sortition, 3, :cancelled, feature: feature)
+                expect(subject.size).to eq(1)
+              end
+            end
+
+            context "when all" do
+              let(:state) { "all" }
+
+              it "Returns sortitions whatever its state is" do
+                create_list(:sortition, 3, :cancelled, feature: feature)
+                expect(subject.size).to eq(4)
+              end
             end
           end
         end

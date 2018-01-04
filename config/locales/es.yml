@@ -30,6 +30,7 @@ es:
           actions:
             new: Nuevo
             show: Detalles del sorteo
+            destroy: Cancelar el sorteo
           models:
             sortition:
               name:
@@ -63,6 +64,13 @@ es:
               error: Se ha producido un error al crear al crear el sorteo.
             show:
               selected_proposals: Propuestas seleccionadas por sorteo
+            confirm_destroy:
+              title: Cancelación del sorteo
+              confirm_destroy: '¿Está seguro de que quiere cancelar este sorteo?'
+              destroy: Cancelar el sorteo
+            destroy:
+              success: El sorteo se ha cancelado correctamente
+              error: No se ha podido cancelar el sorteo
         sortitions:
           count:
             proposals_count:
@@ -80,10 +88,15 @@ es:
           show:
             additional_info: Información adicional
             witnesses: Testigos
+            cancelled: Sorteo cancelado
           filters:
             search: Buscar
             category: Categoría
             category_prompt: Selecciona una categoría
+            state: Estado
+            all: Todos
+            active: Activos
+            cancelled: Cancelados
           filters_small_view:
             close_modal: Cerrar ventana
             filter: Filtrar
