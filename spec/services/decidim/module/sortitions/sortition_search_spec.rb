@@ -59,11 +59,31 @@ module Decidim
           end
 
           describe "state filter" do
-            let(:state) { "cancelled" }
+            context "when Cancelled" do
+              let(:state) { "cancelled" }
 
-            it "Returns sortitions with the given state" do
-              create_list(:sortition, 3, :cancelled, feature: feature)
-              expect(subject.size).to eq(3)
+              it "Returns sortitions with the given state" do
+                create_list(:sortition, 3, :cancelled, feature: feature)
+                expect(subject.size).to eq(3)
+              end
+            end
+
+            context "when Active" do
+              let(:state) { "active" }
+
+              it "Returns sortitions with the given state" do
+                create_list(:sortition, 3, :cancelled, feature: feature)
+                expect(subject.size).to eq(1)
+              end
+            end
+
+            context "when all" do
+              let(:state) { "all" }
+
+              it "Returns sortitions whatever its state is" do
+                create_list(:sortition, 3, :cancelled, feature: feature)
+                expect(subject.size).to eq(4)
+              end
             end
           end
         end
