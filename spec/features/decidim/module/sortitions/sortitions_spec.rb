@@ -20,15 +20,8 @@ describe "sortitions", type: :feature do
       let!(:unlucky_sortition) { create(:sortition, feature: feature) }
 
       it "lists the sortitions ordered randomly" do
-        visit_feature
+        page.visit "#{main_feature_path(feature)}?order=random"
 
-        within ".order-by" do
-          expect(page).to have_selector("ul[data-dropdown-menu$=dropdown-menu]", text: "Recent")
-          page.find("a", text: "Recent").click
-          click_link "Random"
-        end
-
-        expect(page).to have_selector("a", text: "Random")
         expect(page).to have_selector(".card--sortition", count: 2)
         expect(page).to have_selector(".card--sortition", text: lucky_sortition.title[:en])
         expect(page).to have_selector(".card--sortition", text: unlucky_sortition.title[:en])
