@@ -27,6 +27,10 @@ FactoryBot.define do
     additional_info { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     selected_proposals { create_list(:proposal, target_items, feature: decidim_proposals_feature).pluck(:id) }
 
+    # sequence :reference do |n|
+    #   "I-SORT-#{Time.zone.today.year}-#{Time.zone.today.month}-#{n}"
+    # end
+
     trait :cancelled do
       cancelled_on { Time.now.utc }
       cancel_reason { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }

@@ -89,6 +89,16 @@ es:
             additional_info: Información adicional
             witnesses: Testigos
             cancelled: Sorteo cancelado
+            introduction: >
+              Esta página contiene los resultados del sorteo %{reference}. Por medio de este sorteo,
+              %{target_items} propuestas se han seleccionado al azar y con la misma distribución de
+              probabilidad del conjunto de propuestas que se muestran a continuación. Junto con los resultados,
+              la información mostrada en esta página proporciona toda la información requerida para maximizar las
+              garantías y reproducir los resultados. La clave para la calidad de esta clasificación es la doble
+              aleatoriedad proporcionada por el lanzamiento de un dado (verificado por testigos) y el tiempo preciso de
+              la clasificación que proporciona la entrada para un algoritmo que genera una selección aleatoria.
+              La semilla de tiempo para la clasificación es tan precisa (segundos) que es imposible de controlar por los
+              humanos proporcionando así una doble entrada "incontrolable" para garantizar un resultado justo.
           filters:
             search: Buscar
             category: Categoría

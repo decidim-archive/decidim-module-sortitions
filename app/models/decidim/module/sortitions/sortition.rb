@@ -21,8 +21,6 @@ module Decidim
                    class_name: "Decidim::User",
                    optional: true
 
-        before_validation :initialize_reference
-
         scope :categorized_as, lambda { |category_id|
           includes(:categorization)
             .where("decidim_categorizations.decidim_category_id" => category_id)
@@ -68,12 +66,6 @@ module Decidim
             connection.execute("SELECT setseed(#{connection.quote(seed)})")
             order("RANDOM()").load
           end
-        end
-
-        private
-
-        def initialize_reference
-          self[:reference] ||= calculate_reference
         end
       end
     end

@@ -3,10 +3,11 @@
     <div class="author-data">
       <%= render partial: "sortition_author", locals: { sortition: sortition } %>
     </div>
-
-    <%= feature_reference(sortition) %>
   </div>
   <div class="columns mediumlarge-8 mediumlarge-pull-4">
+    <div class=section>
+      <%=t ".introduction", reference: sortition.reference, target_items: sortition.target_items %>
+    </div>
     <div class="title-action">
       <h2 class="title-action__title section-heading"><%=t ".additional_info" %></h2>
     </div>

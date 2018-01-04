@@ -89,6 +89,12 @@ module Decidim
               sortition = Sortition.where(feature: sortition_feature).last
               expect(sortition.category).to eq(category)
             end
+
+            it "Has a reference" do
+              command.call
+              sortition = Sortition.where(feature: sortition_feature).last
+              expect(sortition.reference).not_to be_blank
+            end
           end
         end
       end
