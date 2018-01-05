@@ -37,14 +37,8 @@ module Decidim
                     }
 
           delegate :categories, to: :current_participatory_space
-
-          def current_participatory_space
-            context.try(:current_participatory_space)
-          end
-
-          def current_feature
-            context.try(:current_feature)
-          end
+          delegate :current_participatory_space, to: :context
+          delegate :current_feature, to: :context
         end
       end
     end

@@ -15,6 +15,27 @@ module Decidim
             authorize! :show, sortition
           end
 
+          def edit
+            authorize! :update, sortition
+            @form = edit_sortition_form.from_model(sortition, current_participatory_space: current_participatory_space)
+          end
+
+          def update
+            authorize! :update, sortition
+            @form = edit_sortition_form.from_params(params, current_participatory_space: current_participatory_space)
+            UpdateSortition.call(@form) do
+              on(:ok) do |sortition|
+                flash[:notice] = I18n.t("sortitions.update.success", scope: "decidim.module.sortitions.admin")
+                redirect_to sortitions_path(feature_id: sortition.feature.id, participatory_process_slug: sortition.feature.participatory_space.slug)
+              end
+
+              on(:invalid) do
+                flash.now[:alert] = I18n.t("sortitions.update.error", scope: "decidim.module.sortitions.admin")
+                render :edit
+              end
+            end
+          end
+
           def new
             authorize! :create, Sortition
             @form = sortition_form.instance(current_participatory_space: current_participatory_space)
@@ -61,6 +82,10 @@ module Decidim
 
           def sortition_form
             form(SortitionForm)
+          end
+
+          def edit_sortition_form
+            form(EditSortitionForm)
           end
 
           def destroy_sortition_form

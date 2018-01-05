@@ -46,7 +46,8 @@ module Decidim
               target_items: form.target_items,
               witnesses: form.witnesses,
               additional_info: form.additional_info,
-              selected_proposals: []
+              selected_proposals: [],
+              candidate_proposals: []
             )
           end
 
