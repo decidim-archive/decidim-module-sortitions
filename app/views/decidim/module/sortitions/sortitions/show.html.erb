@@ -98,7 +98,7 @@
     </div>
     <div class=row>
       <div class="columns small-centered mediumlarge-12 large-12">
-        <%= sortition.candidate_proposals.join(", ") %>
+        <%= sortition.candidate_proposals&.join(", ") %>
       </div>
     </div>
   </section>

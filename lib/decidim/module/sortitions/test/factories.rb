@@ -26,6 +26,7 @@ FactoryBot.define do
     witnesses { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     additional_info { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     selected_proposals { create_list(:proposal, target_items, feature: decidim_proposals_feature).pluck(:id) }
+    candidate_proposals { selected_proposals }
 
     # sequence :reference do |n|
     #   "I-SORT-#{Time.zone.today.year}-#{Time.zone.today.month}-#{n}"
