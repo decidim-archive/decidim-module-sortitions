@@ -58,8 +58,12 @@ module Decidim
           end
 
           def select_proposals_for(sortition)
-            proposals = Draw.for(sortition)
-            sortition.update(selected_proposals: proposals) unless proposals.empty?
+            draw = Draw.new(sortition)
+
+            sortition.update(
+              selected_proposals: draw.results,
+              candidate_proposals: draw.proposals.pluck(:id)
+            )
           end
         end
       end

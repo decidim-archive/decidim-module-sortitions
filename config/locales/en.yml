@@ -98,6 +98,11 @@ en:
               and the precise time of the sortition that provides input for an algorithm that generates a random selection.
               The time-seed for the sortition is so accurate (seconds) that it is impossible to control by humans
               thus providing a double "uncontrollable" input to guarantee a fair result.
+            dice_result: (1) Dice result
+            time_seed: (2) Time seed
+            mathematical_result: Result (1) x (2)
+            algorithm: Algorithm
+            candidate_proposal_ids: Candidate proposal IDs
           filters:
             search: Search
             category: Category

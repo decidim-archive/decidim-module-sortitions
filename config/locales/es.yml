@@ -99,6 +99,11 @@ es:
               la clasificación que proporciona la entrada para un algoritmo que genera una selección aleatoria.
               La semilla de tiempo para la clasificación es tan precisa (segundos) que es imposible de controlar por los
               humanos proporcionando así una doble entrada "incontrolable" para garantizar un resultado justo.
+            dice_result: (1) Resultado del dado
+            time_seed: (2) Semilla temporal
+            mathematical_result: Resultado (1) x (2)
+            algorithm: Algoritmo
+            candidate_proposal_ids: Identificadores de las propuestas candidatas
           filters:
             search: Buscar
             category: Categoría

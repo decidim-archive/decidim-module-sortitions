@@ -20,8 +20,11 @@ module Decidim
 
           # Executes the draw and return the selected proposal ids.
           def results
-            proposals = ParticipatorySpaceProposals.for(sortition).to_a
             proposals.sample(sortition.target_items, random: Random.new(sortition.seed)).pluck(:id)
+          end
+
+          def proposals
+            @proposals ||= ParticipatorySpaceProposals.for(sortition).to_a
           end
         end
       end

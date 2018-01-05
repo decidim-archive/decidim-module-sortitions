@@ -1,19 +1,18 @@
-<div class="row">
-  <div class="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
+<div class="row column">
+  <div class=section>
     <div class="author-data">
       <%= render partial: "sortition_author", locals: { sortition: sortition } %>
     </div>
   </div>
-  <div class="columns mediumlarge-8 mediumlarge-pull-4">
-    <div class=section>
-      <%=t ".introduction", reference: sortition.reference, target_items: sortition.target_items %>
-    </div>
-    <div class="title-action">
-      <h2 class="title-action__title section-heading"><%=t ".additional_info" %></h2>
-    </div>
-    <div class="section">
-      <%= sanitize translated_attribute sortition.additional_info %>
-    </div>
+
+  <div class=section>
+    <%=t ".introduction", reference: sortition.id, target_items: sortition.target_items %>
+  </div>
+  <div class="title-action">
+    <h2 class="title-action__title section-heading"><%=t ".additional_info" %></h2>
+  </div>
+  <div class="section">
+    <%= sanitize translated_attribute sortition.additional_info %>
   </div>
 </div>
 
@@ -58,3 +57,49 @@
     </div>
   </div>
 <% end %>
+
+<div class="row column">
+  <section class="extended" id="sortition-details">
+    <div class="row column">
+      <h4 class="section-heading">Detalles del sorteo</h4>
+    </div>
+    <div class=row>
+      <div class="columns small-centered mediumlarge-12 large-12 sortition-details">
+        <div class="sortition-details-item">
+          <span class="sortition-details-title sortition-details-text"><%=t ".dice_result" %></span>
+          <span class=sortition-details-text><%= sortition.dice %></span>
+        </div>
+
+        <div class="sortition-details-item">
+          <span class="sortition-details-title sortition-details-text"><%=t ".time_seed" %></span>
+          <span class=sortition-details-text><%= sortition.request_timestamp.to_i %></span>
+        </div>
+
+        <div class="sortition-details-item">
+          <span class="sortition-details-title sortition-details-text"><%=t ".mathematical_result" %></span>
+          <span class=sortition-details-text><%= sortition.seed %></span>
+        </div>
+
+        <div class="sortition-details-item">
+          <span class=sortition-details-text>
+            <%= link_to Decidim::Module::Sortitions.sortition_algorithm,
+                        Decidim::Module::Sortitions.sortition_algorithm,
+                        target: "_blank",
+                        title: t(".algorithm") %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class=extended>
+    <div class="row column">
+      <h4 class="section-heading"><%=t ".candidate_proposal_ids" %></h4>
+    </div>
+    <div class=row>
+      <div class="columns small-centered mediumlarge-12 large-12">
+        <%= sortition.candidate_proposals&.join(", ") %>
+      </div>
+    </div>
+  </section>
+</div>

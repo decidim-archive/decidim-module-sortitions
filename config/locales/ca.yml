@@ -99,6 +99,11 @@ ca:
               la classificació que proporciona l'entrada per a un algorisme que genera una selecció aleatòria.
               La sembra de temps per a la classificació és tan precisa (segons) que és impossible de controlar pels
               humans proporcionant així una doble entrada "incontrolable" per garantir un resultat just.
+            dice_result: (1) Resultat del dau
+            time_seed: (2) Llavor temporal
+            mathematical_result: Resultat (1) x (2)
+            algorithm: Algoritme
+            candidate_proposal_ids: Identificadors de les propostes candidates
           filters:
             search: Cerca
             category: Categoria

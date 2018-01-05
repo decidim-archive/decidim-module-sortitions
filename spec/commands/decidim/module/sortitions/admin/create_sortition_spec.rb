@@ -84,6 +84,12 @@ module Decidim
               expect(sortition.selected_proposals).not_to be_empty
             end
 
+            it "The created sortition contains a list of candidate proposals" do
+              command.call
+              sortition = Sortition.where(feature: sortition_feature).last
+              expect(sortition.candidate_proposals).not_to be_empty
+            end
+
             it "Has a category" do
               command.call
               sortition = Sortition.where(feature: sortition_feature).last

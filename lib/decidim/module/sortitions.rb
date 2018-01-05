@@ -16,6 +16,11 @@ module Decidim
       config_accessor :items_per_page do
         15
       end
+
+      # Link to algorithm used for the sortition
+      config_accessor :sortition_algorithm do
+        "https://ruby-doc.org/core-2.4.0/Random.html"
+      end
     end
   end
 end
