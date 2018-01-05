@@ -163,6 +163,73 @@ module Decidim
               end
             end
           end
+
+          describe "edit" do
+            let(:sortition) { create(:sortition) }
+            let(:params) do
+              {
+                feature_id: sortition.feature.id,
+                participatory_process_slug: sortition.feature.participatory_space.slug,
+                id: sortition.id
+              }
+            end
+
+            it "renders the edit template" do
+              get :edit, params: params
+              expect(response).to render_template(:edit)
+            end
+          end
+
+          describe "update" do
+            let(:title) do
+              {
+                en: "Title",
+                es: "Título",
+                ca: "Títol"
+              }
+            end
+            let(:additional_info) do
+              {
+                en: "Additional info",
+                es: "Información adicional",
+                ca: "Informació adicional"
+              }
+            end
+            let(:params) do
+              {
+                participatory_process_slug: feature.participatory_space.slug,
+                id: sortition.id,
+                sortition: {
+                  title: title,
+                  additional_info: additional_info
+                }
+              }
+            end
+
+            context "with invalid params" do
+              let(:title) do
+                {
+                  en: "",
+                  es: "",
+                  ca: ""
+                }
+              end
+
+              it "renders the edit template" do
+                patch :update, params: params
+                expect(response).to render_template(:edit)
+              end
+            end
+
+            context "with valid params" do
+              it "redirects to sortitions list newly created sortition" do
+                patch :update, params: params
+                expect(response).to redirect_to action: :index,
+                                                feature_id: sortition.feature.id,
+                                                participatory_process_slug: sortition.feature.participatory_space.slug
+              end
+            end
+          end
         end
       end
     end

@@ -12,7 +12,7 @@ module Decidim
         paths["db/migrate"] = nil
 
         routes do
-          resources :sortitions, only: [:index, :show, :new, :create, :destroy] do
+          resources :sortitions do
             get "confirm_destroy", on: :member
           end
 

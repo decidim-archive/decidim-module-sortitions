@@ -29,6 +29,7 @@ ca:
         admin:
           actions:
             new: Nou
+            edit: Edita
             show: Detalls del sorteig
             destroy: Cancela el sorteig
           models:
@@ -55,13 +56,19 @@ ca:
               title: Nou sorteig
               create: Crea
               confirm: En prémer el botó Decidim gravarà el la data i hora (amb precisió de segons) i juntament amb la tirada de daus, aquesta informació servirà per generar una selecció aleatòria. L'acció serà irreversible, un cop premut el botó el resultat d'aquest sorteig es publicarà, juntament les dades introduïdes en aquest formulari i no es podran modificar, si us plau revisa a consciència el contingut
+            edit:
+              title: Actualitza la informació sobre el
+              update: Actualitzar
             form:
               title: Nou sorteig de propostes
               all_categories: Totes les categories
               select_proposal_feature: Selecciona el conjunt de propostes
             create:
               success: Sorteig creat correctament.
-              error: TS'ha produït un error creant el sorteig.
+              error: S'ha produït un error creant el sorteig.
+            update:
+              success: Sorteig actualitzat correctament.
+              error: S'ha produït un error al actualitzar el sorteig.
             show:
               selected_proposals: Propostes seleccionades per sorteig
             confirm_destroy:

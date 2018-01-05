@@ -29,6 +29,7 @@ en:
         admin:
           actions:
             new: New
+            edit: Edit
             show: Sortition details
             destroy: Cancel the sortition
           models:
@@ -55,6 +56,9 @@ en:
               title: New sortition
               create: Create
               confirm: By pressing the next button Decidim will record the date and time (with precision of seconds) and together with the dice roll, this information will be used to generate a random selection. The action will be irreversible, once the button is clicked the result of this draw will be published, together with the data entered in this form and can not be modified, please check the content carefully
+            edit:
+              title: Update the information about the sortition
+              update: Update
             form:
               title: New sortition for proposals
               all_categories: All categories
@@ -62,6 +66,9 @@ en:
             create:
               success: Sortition successfully created
               error: There was an error creating a new sortition.
+            update:
+              success: Sortition successfully update
+              error: There was an error updating the sortition.
             show:
               selected_proposals: Proposals selected for draw
             confirm_destroy:

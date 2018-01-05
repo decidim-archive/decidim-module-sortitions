@@ -9,4 +9,5 @@ describe "Admin manages sortitions", type: :feature do
 
   it_behaves_like "manage sortitions"
   it_behaves_like "cancel sortitions"
+  it_behaves_like "update sortitions"
 end

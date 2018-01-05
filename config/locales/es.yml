@@ -29,6 +29,7 @@ es:
         admin:
           actions:
             new: Nuevo
+            edit: Editar
             show: Detalles del sorteo
             destroy: Cancelar el sorteo
           models:
@@ -55,6 +56,9 @@ es:
               title: Nuevo sorteo
               create: Crear
               confirm: Al pulsar el siguiente botón Decidim grabará el la fecha y hora (con precisión de segundos) y junto con la tirada de dados, esta información servirá para generar una seleccion aleatoria. La acción será irreversible, una vez pulsado el botón el resultado de este sorteo se publicará, junto los datos introducidos en este formulario y no se podrán modificar, por favor revisa concienzudamente el contenido
+            edit:
+              title: Actualizar la información sobre el sorteo
+              update: Actualizar
             form:
               title: Nuevo sorteo de propuestas
               all_categories: Todas las categorías
@@ -62,6 +66,9 @@ es:
             create:
               success: Sorteo creado correctamente.
               error: Se ha producido un error al crear al crear el sorteo.
+            update:
+              success: Sorteo actualizado correctamente.
+              error: Se ha producido un error al crear al actualizar el sorteo.
             show:
               selected_proposals: Propuestas seleccionadas por sorteo
             confirm_destroy:
