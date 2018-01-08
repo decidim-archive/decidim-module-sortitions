@@ -91,7 +91,7 @@ shared_examples "manage sortitions" do
         expect(page).to have_admin_callout("successfully")
         expect(page).to have_content(/Title/i)
 
-        proposal = Decidim::Module::Sortitions::Sortition.last
+        proposal = Decidim::Sortitions::Sortition.last
         within ".sortition" do
           expect(page).to have_content(/Draw time/i)
           expect(page).to have_content(/Dice/i)
