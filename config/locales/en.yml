@@ -9,7 +9,7 @@ en:
         decidim_category_id: Categories of the set of proposals in which you want to apply the draw
         decidim_proposals_feature_id: Proposals set
         witnesses: Witnesses
-        additional_info: Additional information
+        additional_info: Sortition information
   pages:
     home:
       statistics:
@@ -93,9 +93,11 @@ en:
               one: 1 sortition
               other: "%{count} sortitions"
           show:
-            additional_info: Additional information
+            additional_info: Sortition information
             witnesses: Witnesses
             cancelled: Cancelled sortition
+            sortition_reproducibility_details: Sortition reproducibility details
+            proposals_selected_by_sortition: Proposals selected by sortition
             introduction: >
               This page contains the results of the sortition %{reference}. By means of this sortition,
               %{target_items} number of results have been selected randomly and with an equal probability
@@ -108,8 +110,13 @@ en:
             dice_result: (1) Dice result
             time_seed: (2) Time seed
             mathematical_result: Result (1) x (2)
-            algorithm: Algorithm
-            candidate_proposal_ids: Candidate proposal IDs
+            algorithm: Sortition's Algorithm code
+            candidate_proposal_ids: Sortition proposals order and IDs
+            candidate_proposals_info: >
+              The sortition was carried out among the following proposals (%{category_label}), with the
+              following IDs (in bold the selected proposals)
+            any_category: from all categories
+            category: from the %{category} category
           filters:
             search: Search
             category: Category

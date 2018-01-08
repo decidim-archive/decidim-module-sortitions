@@ -96,6 +96,8 @@ es:
             additional_info: Información adicional
             witnesses: Testigos
             cancelled: Sorteo cancelado
+            sortition_reproducibility_details: Detalles de reproducibilidad del sorteo
+            proposals_selected_by_sortition: Propuestas seleccionadas por sorteo
             introduction: >
               Esta página contiene los resultados del sorteo %{reference}. Por medio de este sorteo,
               %{target_items} propuestas se han seleccionado al azar y con la misma distribución de
@@ -109,8 +111,13 @@ es:
             dice_result: (1) Resultado del dado
             time_seed: (2) Semilla temporal
             mathematical_result: Resultado (1) x (2)
-            algorithm: Algoritmo
-            candidate_proposal_ids: Identificadores de las propuestas candidatas
+            algorithm: Código del algoritmo de sorteo
+            candidate_proposal_ids: Orden de propuestas del sorteo e IDs
+            candidate_proposals_info: >
+              El sorteo se llevó a cabo entre las siguientes propuestas (%{category_label}), con los siguientes
+              identificadores (en negrita las propuestas seleccionadas)
+            any_category: de todas las categorias
+            category: De la categoría %{category}
           filters:
             search: Buscar
             category: Categoría
