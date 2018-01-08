@@ -49,7 +49,7 @@ shared_examples "manage sortitions" do
 
     it "Requires additional information" do
       within "form" do
-        expect(page).to have_content(/Additional information/i)
+        expect(page).to have_content(/Sortition information/i)
       end
     end
 

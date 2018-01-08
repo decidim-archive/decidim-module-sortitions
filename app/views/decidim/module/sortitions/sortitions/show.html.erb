@@ -1,13 +1,19 @@
 <div class="row column">
+  <div class="row column">
+    <div class="callout success">
+      <p><%=t ".introduction", reference: sortition.id, target_items: sortition.target_items %></p>
+    </div>
+  </div>
+
   <div class=section>
+    <div class="title-action">
+      <h2 class="title-action__title section-heading"><%= translated_attribute sortition.title %></h2>
+    </div>
     <div class="author-data">
       <%= render partial: "sortition_author", locals: { sortition: sortition } %>
     </div>
   </div>
 
-  <div class=section>
-    <%=t ".introduction", reference: sortition.id, target_items: sortition.target_items %>
-  </div>
   <div class="title-action">
     <h2 class="title-action__title section-heading"><%=t ".additional_info" %></h2>
   </div>
@@ -45,7 +51,7 @@
   <div class="row columns">
     <div class="title-action">
       <h2 id="proposals-count" class="title-action__title section-heading">
-        <%= render partial: "count", locals: { proposals: sortition.proposals } %>
+        <%=t ".proposals_selected_by_sortition" %>
       </h2>
     </div>
     <div class="row">
@@ -61,7 +67,7 @@
 <div class="row column">
   <section class="extended" id="sortition-details">
     <div class="row column">
-      <h4 class="section-heading">Detalles del sorteo</h4>
+      <h4 class="section-heading"><%=t ".sortition_reproducibility_details" %></h4>
     </div>
     <div class=row>
       <div class="columns small-centered mediumlarge-12 large-12 sortition-details">
@@ -81,6 +87,7 @@
         </div>
 
         <div class="sortition-details-item">
+          <span class="sortition-details-title sortition-details-text"><%=t ".algorithm" %></span><br>
           <span class=sortition-details-text>
             <%= link_to Decidim::Module::Sortitions.sortition_algorithm,
                         Decidim::Module::Sortitions.sortition_algorithm,
@@ -96,9 +103,12 @@
     <div class="row column">
       <h4 class="section-heading"><%=t ".candidate_proposal_ids" %></h4>
     </div>
+    <div class="row columns">
+      <%=t ".candidate_proposals_info", category_label: sortition_category_label(sortition) %>:
+    </div>
     <div class=row>
       <div class="columns small-centered mediumlarge-12 large-12">
-        <%= sortition.candidate_proposals&.join(", ") %>
+        <%= sortition_proposal_candidate_ids sortition %>
       </div>
     </div>
   </section>

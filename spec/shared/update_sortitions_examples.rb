@@ -17,7 +17,7 @@ shared_examples "update sortitions" do
 
     it "requires additional information" do
       within "form" do
-        expect(page).to have_content(/Additional information/i)
+        expect(page).to have_content(/Sortition information/i)
       end
     end
 

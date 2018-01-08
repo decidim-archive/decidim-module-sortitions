@@ -96,6 +96,8 @@ ca:
             additional_info: Informació adicional
             witnesses: Testimonis
             cancelled: Sorteig cancel·lat
+            sortition_reproducibility_details: Detalls de reproducibilitat del sorteig
+            proposals_selected_by_sortition: Propostes sel·leccionades per sorteig
             introduction: >
               Aquesta pàgina conté els resultats del sorteig %{reference}. Per mitjà d'aquest sorteig,
               %{target_items} propostes s'han seleccionat a l'atzar i amb la mateixa distribució de
@@ -109,8 +111,13 @@ ca:
             dice_result: (1) Resultat del dau
             time_seed: (2) Llavor temporal
             mathematical_result: Resultat (1) x (2)
-            algorithm: Algoritme
-            candidate_proposal_ids: Identificadors de les propostes candidates
+            algorithm: Codi de l'algoritme del sorteig
+            candidate_proposal_ids: Ordre de propostes del sorteig i identificadors
+            candidate_proposals_info: >
+              El sorteig es va dur a terme entre les següents propostes (%{category_label}), amb els següents
+              identificadors (en negreta les propostes seleccionades)
+            any_category: de totes les categories
+            category: De la categoria %{category}
           filters:
             search: Cerca
             category: Categoria
