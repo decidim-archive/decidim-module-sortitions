@@ -23,7 +23,7 @@ es:
         name: Sorteos
         settings:
           global:
-            description: Descripción
+            comments_enabled: Comentarios habilitados
     sortitions:
       admin:
         actions:
@@ -51,6 +51,10 @@ es:
         sortitions:
           index:
             title: Sorteos
+          linked_sortitions:
+            selected_proposals:
+              one: propuesta seleccionada
+              other: propuestas seleccionadas
           new:
             title: Nuevo sorteo
             create: Crear
@@ -91,8 +95,11 @@ es:
           count:
             one: 1 sorteo
             other: "%{count} sorteos"
+        results_count:
+          count:
+            one: propuesta seleccionada
+            other: propuestas seleccionadas
         show:
-          additional_info: Información adicional
           witnesses: Testigos
           cancelled: Sorteo cancelado
           sortition_reproducibility_details: Detalles de reproducibilidad del sorteo
