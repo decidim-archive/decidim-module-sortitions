@@ -12,12 +12,14 @@ module Decidim
       isolate_namespace Decidim::Sortitions
 
       routes do
-        resources :sortitions, only: [:index, :show]
+        resources :sortitions, only: [:index, :show] do
+          resource :sortition_widget, only: :show, path: "embed"
+        end
         root to: "sortitions#index"
       end
 
       initializer "decidim_sorititions.assets" do |app|
-        app.config.assets.precompile += %w(decidim_sortitions_manifest.js)
+        app.config.assets.precompile += %w(decidim_sortitions_manifest.js decidim_sortitions_manifest.css)
       end
     end
   end

@@ -23,7 +23,7 @@ en:
         name: Sortitions
         settings:
           global:
-            description: Description
+            comments_enabled: Comments enabled
     sortitions:
       admin:
         actions:
@@ -51,6 +51,10 @@ en:
         sortitions:
           index:
             title: Sortitions
+          linked_sortitions:
+            selected_proposals:
+              one: selected proposal
+              other: selected proposals
           new:
             title: New sortition
             create: Create
@@ -91,8 +95,11 @@ en:
           count:
             one: 1 sortition
             other: "%{count} sortitions"
+        results_count:
+          count:
+            one: selected proposal
+            other: selected proposals
         show:
-          additional_info: Sortition information
           witnesses: Witnesses
           cancelled: Cancelled sortition
           sortition_reproducibility_details: Sortition reproducibility details

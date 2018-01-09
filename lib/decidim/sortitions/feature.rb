@@ -15,17 +15,18 @@ Decidim.register_feature(:sortitions) do |feature|
   # These actions permissions can be configured in the admin panel
   feature.actions = %w()
 
-  # feature.settings(:global) do |settings|
-  # end
+  feature.settings(:global) do |settings|
+    settings.attribute :comments_enabled, type: :boolean, default: true
+  end
 
   # feature.settings(:step) do |settings|
   # end
 
-  # # Register an optional resource that can be referenced from other resources.
-  # feature.register_resource do |resource|
-  #   resource.model_class_name = "Decidim::<EngineName>::<ResourceName>"
-  #   resource.template = "decidim/<engine_name>/<resource_view_folder>/linked_<resource_name_plural>"
-  # end
+  # Register an optional resource that can be referenced from other resources.
+  feature.register_resource do |resource|
+    resource.model_class_name = "Decidim::Sortitions::Sortition"
+    resource.template = "decidim/sortitions/sortitions/linked_sortitions"
+  end
 
   feature.register_stat :sortitions_count, primary: true, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |features, start_at, end_at|
     Decidim::Sortitions::FilteredSortitions.for(features, start_at, end_at).count

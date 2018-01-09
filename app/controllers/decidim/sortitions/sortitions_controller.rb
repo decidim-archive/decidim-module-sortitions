@@ -4,6 +4,7 @@ module Decidim
   module Sortitions
     # Exposes the sortition resource so users can view them
     class SortitionsController < Decidim::Sortitions::ApplicationController
+      helper Decidim::WidgetUrlsHelper
       include FilterResource
       include Orderable
       include Paginable

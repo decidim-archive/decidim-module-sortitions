@@ -23,7 +23,7 @@ ca:
         name: Sortejos
         settings:
           global:
-            description: Descripció
+            comments_enabled: Comentaris habilitats
     sortitions:
       admin:
         actions:
@@ -51,6 +51,10 @@ ca:
         sortitions:
           index:
             title: Sortejos
+          linked_sortitions:
+            selected_proposals:
+              one: proposta seleccionada
+              other: propostes seleccionades
           new:
             title: Nou sorteig
             create: Crea
@@ -91,8 +95,11 @@ ca:
           count:
             one: 1 sorteig
             other: "%{count} sortejos"
+        results_count:
+          count:
+            one: proposta seleccionada
+            other: propostes seleccionades
         show:
-          additional_info: Informació adicional
           witnesses: Testimonis
           cancelled: Sorteig cancel·lat
           sortition_reproducibility_details: Detalls de reproducibilitat del sorteig

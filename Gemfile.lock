@@ -3,8 +3,10 @@ PATH
   specs:
     decidim-sortitions (0.2.0)
       decidim-admin (~> 0.8.3)
+      decidim-comments (~> 0.8.3)
       decidim-core (~> 0.8.3)
       rails (~> 5.1.4)
+      social-share-button (~> 1.0.0)
 
 GEM
   remote: https://rubygems.org/
