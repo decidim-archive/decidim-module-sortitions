@@ -46,14 +46,6 @@ module Decidim
         request_timestamp.to_i * dice
       end
 
-      def author_name
-        author&.name
-      end
-
-      def cancelled_by_user_avatar_url
-        cancelled_by_user&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
-      end
-
       def cancelled?
         cancelled_on.present?
       end

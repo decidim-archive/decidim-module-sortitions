@@ -1,7 +1,7 @@
 <div class="author-data__main">
   <div class="author author--inline">
     <span class="author__avatar author__avatar--small">
-      <%= image_tag proposal.author.avatar_url %>
+      <%= image_tag proposal.author_avatar_url %>
     </span>
     <span class="author__name">
       <% if proposal.author&.deleted? %>
@@ -9,7 +9,7 @@
           <%= t('.deleted') %>
         </span>
       <% else %>
-        <%= proposal.author_name %>
+        <%= proposal.author.name %>
       <% end %>
     </span>
     <% if proposal.user_group && proposal.user_group.verified? %>
