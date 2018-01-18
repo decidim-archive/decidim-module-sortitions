@@ -23,9 +23,9 @@ module Decidim
           authorize! :update, sortition
           @form = edit_sortition_form.from_params(params, current_participatory_space: current_participatory_space)
           UpdateSortition.call(@form) do
-            on(:ok) do |sortition|
+            on(:ok) do |_sortition|
               flash[:notice] = I18n.t("sortitions.update.success", scope: "decidim.sortitions.admin")
-              redirect_to sortitions_path(feature_id: sortition.feature.id, participatory_process_slug: sortition.feature.participatory_space.slug)
+              redirect_to action: :index
             end
 
             on(:invalid) do
@@ -44,9 +44,9 @@ module Decidim
           authorize! :create, Sortition
           @form = sortition_form.from_params(params, current_participatory_space: current_participatory_space)
           CreateSortition.call(@form) do
-            on(:ok) do |sortition|
+            on(:ok) do |_sortition|
               flash[:notice] = I18n.t("sortitions.create.success", scope: "decidim.sortitions.admin")
-              redirect_to sortition_path(feature_id: sortition.feature.id, participatory_process_slug: sortition.feature.participatory_space.slug, id: sortition.id)
+              redirect_to action: :index
             end
 
             on(:invalid) do
@@ -65,9 +65,9 @@ module Decidim
           authorize! :destroy, sortition
           @form = destroy_sortition_form.from_params(params, current_participatory_space: current_participatory_space)
           DestroySortition.call(@form) do
-            on(:ok) do |sortition|
+            on(:ok) do |_sortition|
               flash[:notice] = I18n.t("sortitions.destroy.success", scope: "decidim.sortitions.admin")
-              redirect_to sortitions_path(feature_id: sortition.feature.id, participatory_process_slug: sortition.feature.participatory_space.slug)
+              redirect_to action: :index
             end
 
             on(:invalid) do
