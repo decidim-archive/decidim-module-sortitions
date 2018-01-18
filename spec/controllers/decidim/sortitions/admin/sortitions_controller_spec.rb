@@ -90,14 +90,18 @@ module Decidim
             let(:decidim_proposals_feature_id) { proposal_feature.id }
 
             it "redirects to show newly created sortition" do
+              expect(controller).to receive(:redirect_to) do |params|
+                expect(params).to eq(action: :show, id: Sortition.last.id)
+              end
+
               post :create, params: params
-              expect(response).to redirect_to action: :show,
-                                              feature_id: Sortition.last.feature.id,
-                                              participatory_process_slug: Sortition.last.feature.participatory_space.slug,
-                                              id: Sortition.last.id
             end
 
             it "Sortition author is the current user" do
+              expect(controller).to receive(:redirect_to) do |params|
+                expect(params).to eq(action: :show, id: Sortition.last.id)
+              end
+              
               post :create, params: params
               expect(Sortition.last.author).to eq(user)
             end
@@ -155,10 +159,9 @@ module Decidim
 
           context "with valid params" do
             it "redirects to sortitions list newly created sortition" do
+              expect(controller).to receive(:redirect_to).with(action: :index)
+
               delete :destroy, params: params
-              expect(response).to redirect_to action: :index,
-                                              feature_id: sortition.feature.id,
-                                              participatory_process_slug: sortition.feature.participatory_space.slug
             end
           end
         end
@@ -222,10 +225,9 @@ module Decidim
 
           context "with valid params" do
             it "redirects to sortitions list newly created sortition" do
+              expect(controller).to receive(:redirect_to).with(action: :index)
+
               patch :update, params: params
-              expect(response).to redirect_to action: :index,
-                                              feature_id: sortition.feature.id,
-                                              participatory_process_slug: sortition.feature.participatory_space.slug
             end
           end
         end
