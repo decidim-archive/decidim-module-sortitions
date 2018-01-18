@@ -50,10 +50,6 @@ module Decidim
         author&.name
       end
 
-      def author_avatar_url
-        author&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
-      end
-
       def cancelled_by_user_avatar_url
         cancelled_by_user&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
       end
