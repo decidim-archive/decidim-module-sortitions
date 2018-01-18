@@ -9,7 +9,7 @@
           <%= t('.deleted') %>
         </span>
       <% else %>
-        <%= sortition.author_name %>
+        <%= sortition.author.name %>
       <% end %>
     </span>
     <%= l sortition.created_at, format: :decidim_short %>
