@@ -44,9 +44,9 @@ module Decidim
           authorize! :create, Sortition
           @form = sortition_form.from_params(params, current_participatory_space: current_participatory_space)
           CreateSortition.call(@form) do
-            on(:ok) do |_sortition|
+            on(:ok) do |sortition|
               flash[:notice] = I18n.t("sortitions.create.success", scope: "decidim.sortitions.admin")
-              redirect_to action: :index
+              redirect_to action: :show, id: sortition.id
             end
 
             on(:invalid) do

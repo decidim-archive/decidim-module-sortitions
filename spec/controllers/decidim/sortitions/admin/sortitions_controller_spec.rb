@@ -90,14 +90,18 @@ module Decidim
             let(:decidim_proposals_feature_id) { proposal_feature.id }
 
             it "redirects to show newly created sortition" do
-              expect(controller).to receive(:redirect_to).with(action: :index)
+              expect(controller).to receive(:redirect_to) do |params|
+                expect(params).to eq(action: :show, id: Sortition.last.id)
+              end
 
               post :create, params: params
             end
 
             it "Sortition author is the current user" do
-              expect(controller).to receive(:redirect_to).with(action: :index)
-
+              expect(controller).to receive(:redirect_to) do |params|
+                expect(params).to eq(action: :show, id: Sortition.last.id)
+              end
+              
               post :create, params: params
               expect(Sortition.last.author).to eq(user)
             end
