@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Admin manages sortitions", type: :feature do
+describe "Admin manages sortitions", type: :system do
   let(:manifest_name) { "sortitions" }
 
   include_context "when managing a feature as an admin"

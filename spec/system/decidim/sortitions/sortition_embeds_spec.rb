@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Sortition embeds", type: :feature do
+describe "Sortition embeds", type: :system do
   include_context "with a feature"
   let(:manifest_name) { "sortitions" }
 
