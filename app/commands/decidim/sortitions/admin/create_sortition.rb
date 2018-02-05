@@ -25,6 +25,7 @@ module Decidim
             sortition = create_sortition
             categorize(sortition) if form.decidim_category_id.present?
             select_proposals_for(sortition)
+            send_notification(sortition)
 
             broadcast(:ok, sortition)
           end
@@ -63,6 +64,15 @@ module Decidim
           sortition.update(
             selected_proposals: draw.results,
             candidate_proposals: draw.proposals.pluck(:id)
+          )
+        end
+
+        def send_notification(sortition)
+          Decidim::EventsManager.publish(
+            event: "decidim.events.sortitions.sortition_created",
+            event_class: Decidim::Sortitions::CreateSortitionEvent,
+            resource: sortition,
+            recipient_ids: sortition.participatory_space.followers.pluck(:id)
           )
         end
       end

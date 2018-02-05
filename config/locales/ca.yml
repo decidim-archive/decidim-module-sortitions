@@ -15,6 +15,13 @@ ca:
       statistics:
         sortitions_count: Sortejos
   decidim:
+    events:
+      sortitions:
+        sortition_created:
+          email_intro: "S'ha afegit el sorteig \"%{resource_title}\" a \"%{participatory_space_title}\" que estàs seguint."
+          email_outro: "Has rebut aquesta notificació perquè estàs seguint \"%{participatory_space_title}\". Pots deixar de seguir-ho seguint l'enllaç anterior."
+          email_subject: Nou sorteig afegit a %{participatory_space_title}
+          notification_title: "S'ha afegit el sorteig <a href=\"%{resource_path}\">%{resource_title}</a> a %{participatory_space_title}"
     participatory_processes:
       statistics:
         sortitions_count: Sortejos
