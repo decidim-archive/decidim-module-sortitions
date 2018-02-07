@@ -75,6 +75,16 @@ module Decidim
             end
           end
         end
+
+        context "when filtering withdrawn proposals" do
+          let(:proposals) do
+            create_list(:proposal, 10, :withdrawn, feature: proposal_feature, created_at: request_timestamp - 10.days)
+          end
+
+          it "do not return withdrawn proposals" do
+            expect(described_class.for(sortition)).not_to include(*proposals)
+          end
+        end
       end
     end
   end
