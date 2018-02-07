@@ -24,6 +24,7 @@ module Decidim
         def query
           if category.nil?
             return Decidim::Proposals::Proposal
+                   .except_withdrawn
                    .where("created_at < ?", request_timestamp)
                    .where(feature: sortition.decidim_proposals_feature)
                    .order(id: :asc)
@@ -32,6 +33,7 @@ module Decidim
           # categorization -> category
           Decidim::Proposals::Proposal
             .joins(:categorization)
+            .except_withdrawn
             .where(feature: sortition.decidim_proposals_feature)
             .where("decidim_proposals_proposals.created_at < ?", request_timestamp)
             .where("decidim_categorizations.decidim_category_id = ?", category.id)
