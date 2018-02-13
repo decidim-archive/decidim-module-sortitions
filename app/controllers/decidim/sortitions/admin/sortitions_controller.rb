@@ -94,6 +94,10 @@ module Decidim
         def proposal_features
           ParticipatorySpaceProposalFeatures.for(current_participatory_space)
         end
+
+        def ability_context
+          super.merge(current_participatory_space: current_participatory_space)
+        end
       end
     end
   end

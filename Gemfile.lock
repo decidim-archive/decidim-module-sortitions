@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    decidim-sortitions (0.2.1)
+    decidim-sortitions (0.2.3)
       decidim-admin (~> 0.9.0)
       decidim-comments (~> 0.9.0)
       decidim-core (~> 0.9.0)
