@@ -100,6 +100,22 @@ module Decidim
             sortition = Sortition.where(feature: sortition_feature).last
             expect(sortition.reference).not_to be_blank
           end
+
+          it "sends a notification to the participatory space followers" do
+            follower = create(:user, organization: organization)
+            create(:follow, followable: participatory_process, user: follower)
+
+            expect(Decidim::EventsManager)
+              .to receive(:publish)
+              .with(
+                event: "decidim.events.sortitions.sortition_created",
+                event_class: Decidim::Sortitions::CreateSortitionEvent,
+                resource: kind_of(Sortition),
+                recipient_ids: [follower.id]
+              )
+
+            command.call
+          end
         end
       end
     end

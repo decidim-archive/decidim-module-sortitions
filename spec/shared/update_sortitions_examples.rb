@@ -40,7 +40,7 @@ shared_examples "update sortitions" do
             ca: "Títol"
           )
 
-          accept_confirm { find("*[type=submit]").click }
+          find("*[type=submit]").click
         end
 
         expect(page).to have_admin_callout("successfully")
