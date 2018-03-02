@@ -2,6 +2,6 @@
 
 module Decidim
   module Sortitions
-    VERSION = "0.2.3"
+    VERSION = "0.9.0"
   end
 end
