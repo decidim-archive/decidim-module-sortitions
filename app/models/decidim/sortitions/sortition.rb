@@ -9,6 +9,7 @@ module Decidim
       include Decidim::Authorable
       include Decidim::HasFeature
       include Decidim::HasReference
+      include Decidim::Traceable
       include Decidim::Comments::Commentable
 
       feature_manifest_name "sortitions"
