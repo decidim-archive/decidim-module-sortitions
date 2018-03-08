@@ -9,6 +9,7 @@ module Decidim
         let(:additional_info) { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
         let(:title) { Decidim::Faker::Localized.sentence(3) }
         let(:sortition) { create(:sortition) }
+        let(:user) { create :user, :admin, :confirmed }
         let(:params) do
           {
             id: sortition.id,
@@ -21,6 +22,7 @@ module Decidim
 
         let(:context) do
           {
+            current_user: user,
             current_feature: sortition.feature
           }
         end
@@ -57,6 +59,17 @@ module Decidim
             command.call
             sortition.reload
             expect(sortition.additional_info).to eq(additional_info)
+          end
+
+          it "traces the action", versioning: true do
+            expect(Decidim.traceability)
+              .to receive(:update!)
+              .with(sortition, user, kind_of(Hash))
+              .and_call_original
+
+            expect { command.call }.to change(Decidim::ActionLog, :count)
+            action_log = Decidim::ActionLog.last
+            expect(action_log.version).to be_present
           end
         end
       end

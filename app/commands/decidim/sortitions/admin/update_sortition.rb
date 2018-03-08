@@ -30,7 +30,9 @@ module Decidim
         attr_reader :form
 
         def update_sortition
-          sortition.update(
+          Decidim.traceability.update!(
+            sortition,
+            form.current_user,
             title: form.title,
             additional_info: form.additional_info
           )

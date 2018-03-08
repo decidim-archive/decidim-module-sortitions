@@ -17,7 +17,7 @@ module Decidim
 
         def action_string
           case action
-          when "create"
+          when "create", "update"
             "decidim.sortitions.admin_log.sortition.#{action}"
           else
             super
