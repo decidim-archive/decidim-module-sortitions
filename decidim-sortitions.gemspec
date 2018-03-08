@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "decidim-comments"
   s.add_dependency "decidim-core", "~> #{s.version}"
   s.add_dependency "rails", "~> 5.1.4"
-  s.add_dependency "social-share-button", "~> 1.0.0"
+  s.add_dependency "social-share-button", "~> 1.0"
 
   s.add_development_dependency "decidim-dev", "~> #{s.version}"
 end
