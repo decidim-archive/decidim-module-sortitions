@@ -65,6 +65,17 @@ module Decidim
             expect(sortition).to be_cancelled
           end
 
+          it "traces the action", versioning: true do
+            expect(Decidim.traceability)
+              .to receive(:perform_action!)
+              .with(:delete, sortition, admin)
+              .and_call_original
+
+            expect { command.call }.to change(Decidim::ActionLog, :count)
+            action_log = Decidim::ActionLog.last
+            expect(action_log.version).to be_present
+          end
+
           it "Data from the user who cancelled the sortition is stored" do
             command.call
             sortition.reload

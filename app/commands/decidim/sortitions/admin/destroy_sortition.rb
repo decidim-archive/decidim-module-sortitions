@@ -29,11 +29,17 @@ module Decidim
         attr_reader :form
 
         def destroy_sortition
-          sortition.update(
-            cancel_reason: form.cancel_reason,
-            cancelled_on: Time.now.utc,
-            cancelled_by_user: form.current_user
-          )
+          Decidim.traceability.perform_action!(
+            :delete,
+            sortition,
+            form.current_user
+          ) do
+            sortition.update(
+              cancel_reason: form.cancel_reason,
+              cancelled_on: Time.now.utc,
+              cancelled_by_user: form.current_user
+            )
+          end
         end
 
         def sortition

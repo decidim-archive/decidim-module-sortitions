@@ -91,6 +91,7 @@ en:
       admin_log:
         sortition:
           create: "%{user_name} created the %{resource_name} sortition in %{space_name}"
+          delete: "%{user_name} cancelled the %{resource_name} sortition in %{space_name}"
           update: "%{user_name} updated the %{resource_name} sortition in %{space_name}"
       sortitions:
         count:

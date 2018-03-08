@@ -17,7 +17,7 @@ module Decidim
 
         def action_string
           case action
-          when "create", "update"
+          when "create", "delete", "update"
             "decidim.sortitions.admin_log.sortition.#{action}"
           else
             super
@@ -26,6 +26,7 @@ module Decidim
 
         def diff_fields_mapping
           {
+            cancel_reason: :i18n,
             dice: :integer,
             request_timestamp: :date,
             witnesses: :i18n,
@@ -38,6 +39,10 @@ module Decidim
 
         def i18n_labels_scope
           "activemodel.attributes.sortition"
+        end
+
+        def has_diff?
+        action == "delete" || super
         end
       end
     end
