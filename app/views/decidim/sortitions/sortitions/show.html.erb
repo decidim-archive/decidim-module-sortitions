@@ -24,7 +24,7 @@
         <%= render partial: "results_count", locals: { sortition: sortition } %>
       </div>
     </div>
-    <%= feature_reference(sortition) %>
+    <%= resource_reference(sortition) %>
     <%= render partial: "decidim/shared/share_modal" %>
     <%= embed_modal_for sortition_sortition_widget_url(sortition, format: :js) %>
   </div>

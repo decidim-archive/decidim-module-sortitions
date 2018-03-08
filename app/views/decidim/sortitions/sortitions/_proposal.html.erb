@@ -8,7 +8,7 @@
         <div class="card__author author-data author-data--small">
           <%= render partial: "decidim/shared/author_reference", locals: { author: present(proposal).author } %>
         </div>
-        <%= feature_reference(proposal, class: "reference--text-left") %>
+        <%= resource_reference(proposal, class: "reference--text-left") %>
       </div>
       <%= render partial: "proposal_badge", locals: { proposal: proposal } %>
       <p><%= truncate(proposal.body, length: 100) %></p>
