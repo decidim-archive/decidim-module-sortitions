@@ -8,7 +8,7 @@
         <div class="card__author author-data author-data--small">
           <%= render partial: "sortition_author", locals: { sortition: sortition } %>
         </div>
-        <%= feature_reference(sortition, class: "reference--text-left") %>
+        <%= resource_reference(sortition, class: "reference--text-left") %>
       </div>
       <p class="card__desc">
         <%= decidim_sanitize html_truncate(translated_attribute(sortition.additional_info), length: 100, separator: '...') %>
