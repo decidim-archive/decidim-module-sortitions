@@ -88,6 +88,9 @@ en:
           destroy:
             success: Sortition successfully cancelled
             error: Can not cancel the sortition.
+      admin_log:
+        sortition:
+          create: "%{user_name} created the %{resource_name} sortition in %{space_name}"
       sortitions:
         count:
           proposals_count:

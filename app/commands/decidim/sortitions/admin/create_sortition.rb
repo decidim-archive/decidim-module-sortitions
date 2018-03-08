@@ -36,7 +36,9 @@ module Decidim
         attr_reader :form
 
         def create_sortition
-          Sortition.create!(
+          Decidim.traceability.create!(
+            Sortition,
+            form.current_user,
             feature: form.current_feature,
             title: form.title,
             decidim_proposals_feature_id: form.decidim_proposals_feature_id,

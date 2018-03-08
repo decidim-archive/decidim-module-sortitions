@@ -77,6 +77,17 @@ module Decidim
             end.to change { Sortition.where(feature: sortition_feature).count }.by(1)
           end
 
+          it "traces the action", versioning: true do
+            expect(Decidim.traceability)
+              .to receive(:perform_action!)
+              .with(:create, Sortition, author)
+              .and_call_original
+
+            expect { command.call }.to change(Decidim::ActionLog, :count)
+            action_log = Decidim::ActionLog.last
+            expect(action_log.version).to be_present
+          end
+
           it "The created sortition contains a list of selected proposals" do
             command.call
             sortition = Sortition.where(feature: sortition_feature).last
