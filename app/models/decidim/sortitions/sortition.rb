@@ -9,6 +9,8 @@ module Decidim
       include Decidim::Authorable
       include Decidim::HasFeature
       include Decidim::HasReference
+      include Decidim::Traceable
+      include Decidim::Loggable
       include Decidim::Comments::Commentable
 
       feature_manifest_name "sortitions"
@@ -29,6 +31,10 @@ module Decidim
 
       scope :active, -> { where(cancelled_on: nil) }
       scope :cancelled, -> { where.not(cancelled_on: nil) }
+
+      def self.log_presenter_class_for(_log)
+        Decidim::Sortitions::AdminLog::SortitionPresenter
+      end
 
       def proposals
         Decidim::Proposals::Proposal.where(id: selected_proposals)

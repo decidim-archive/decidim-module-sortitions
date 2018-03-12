@@ -10,6 +10,7 @@ module Decidim
       let(:sortition) { build(:sortition) }
 
       it { is_expected.to be_valid }
+      it { is_expected.to be_versioned }
 
       describe "seed" do
         it "is the multiplication of timestamp per dice value" do
